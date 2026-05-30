@@ -1,25 +1,24 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 import { AppLayout } from './components/layout/AppLayout'
-import { AuthLayout } from './components/layout/AuthLayout'
 import AccountScreen from './pages/AccountScreen'
 import CartScreen from './pages/CartScreen'
 import CategoryScreen from './pages/CategoryScreen'
 import ExploreScreen from './pages/ExploreScreen'
 import FavouritesScreen from './pages/FavouritesScreen'
 import HomeScreen from './pages/HomeScreen'
-import LocationScreen from './pages/LocationScreen'
-import LoginScreen from './pages/LoginScreen'
-import NumberScreen from './pages/NumberScreen'
-import OnboardingScreen from './pages/OnboardingScreen'
+import LocationScreen from './pages/auth/LocationScreen'
+import LoginScreen from './pages/auth/LoginScreen'
+import NumberScreen from './pages/auth/NumberScreen'
+import OnboardingScreen from './pages/auth/OnboardingScreen'
 import OrderFailureScreen from './pages/OrderFailureScreen'
 import OrderSuccessScreen from './pages/OrderSuccessScreen'
 import ProductDetailScreen from './pages/ProductDetailScreen'
 import SearchScreen from './pages/SearchScreen'
-import SignInScreen from './pages/SignInScreen'
-import SignUpScreen from './pages/SignUpScreen'
-import SplashScreen from './pages/SplashScreen'
-import VerificationScreen from './pages/VerificationScreen'
+import SignInScreen from './pages/auth/SignInScreen'
+import SignUpScreen from './pages/auth/SignUpScreen'
+import SplashScreen from './pages/auth/SplashScreen'
+import VerificationScreen from './pages/auth/VerificationScreen'
 
 function App() {
   return (
@@ -27,12 +26,12 @@ function App() {
       <Routes>
         <Route path="/" element={<SplashScreen />} />
         <Route path="/onboarding" element={<OnboardingScreen />} />
-        <Route path="/signin" element={<AuthLayout><SignInScreen /></AuthLayout>} />
-        <Route path="/number" element={<AuthLayout><NumberScreen /></AuthLayout>} />
-        <Route path="/verification" element={<AuthLayout><VerificationScreen /></AuthLayout>} />
-        <Route path="/login" element={<AuthLayout><LoginScreen /></AuthLayout>} />
-        <Route path="/signup" element={<AuthLayout><SignUpScreen /></AuthLayout>} />
-        <Route path="/location" element={<AuthLayout><LocationScreen /></AuthLayout>} />
+        <Route path="/signin" element={<SignInScreen />} />
+        <Route path="/number" element={<NumberScreen />} />
+        <Route path="/verification" element={<VerificationScreen />} />
+        <Route path="/login" element={<LoginScreen />} />
+        <Route path="/signup" element={<SignUpScreen />} />
+        <Route path="/location" element={<LocationScreen />} />
         <Route path="/home" element={<AppLayout><HomeScreen /></AppLayout>} />
         <Route path="/explore" element={<AppLayout><ExploreScreen /></AppLayout>} />
         <Route path="/category/:id" element={<AppLayout><CategoryScreen /></AppLayout>} />
