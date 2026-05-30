@@ -33,7 +33,7 @@ export function OrderFailedModal({
         </div>
 
         <h2 className="mt-6 text-4xl font-semibold tracking-[-0.04em] text-textPrimary">Oops! Order Failed</h2>
-        <p className="mt-4 text-lg text-textSecondary">Something went terribly wrong.</p>
+        <p className="mt-4 text-lg text-textSecondary">Something went tembly wrong.</p>
 
         <div className="mt-10">
           <Button

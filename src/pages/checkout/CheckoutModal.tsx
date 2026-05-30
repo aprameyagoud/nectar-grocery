@@ -72,9 +72,12 @@ export function CheckoutModal({ onClose }: { onClose: () => void }) {
               </button>
             </div>
             <div className="flex items-center justify-between py-5 text-lg">
-              <span className="font-medium text-textSecondary">Payment</span>
+              <span className="font-medium text-textSecondary">Pament</span>
               <button type="button" className="inline-flex items-center gap-2 font-semibold text-textPrimary focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Select payment method">
-                <span className="inline-flex h-6 items-center justify-center rounded-sm bg-[#4A69F0] px-1 text-[10px] font-bold text-white">MC</span>
+                <span className="inline-flex h-6 items-center gap-[-4px] justify-center">
+                  <span className="h-4 w-4 rounded-full bg-[#EC1C24]" />
+                  <span className="-ml-1 h-4 w-4 rounded-full bg-[#F79E1B] opacity-90" />
+                </span>
                 <ChevronRightIcon className="h-6 w-6" />
               </button>
             </div>

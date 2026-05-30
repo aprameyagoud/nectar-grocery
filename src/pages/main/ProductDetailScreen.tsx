@@ -50,6 +50,8 @@ export default function ProductDetailScreen() {
     [id, products],
   )
 
+  const displayName = product.id === 'red-apple' ? 'Naturel Red Apple' : product.name
+
   if (loading || !product) {
     return <ProductDetailSkeleton />
   }
@@ -69,7 +71,7 @@ export default function ProductDetailScreen() {
         <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:items-start">
           <div className="space-y-3">
             <div className="flex h-64 items-center justify-center rounded-[28px] bg-surface p-8">
-              <img src={product.image} alt={product.name} className="h-full w-full object-contain" />
+              <img src={product.image} alt={displayName} className="h-full w-full object-contain" />
             </div>
             <div className="flex justify-center gap-2">
               <span className="h-2 w-6 rounded-full bg-primary" />
@@ -81,7 +83,7 @@ export default function ProductDetailScreen() {
           <div className="relative">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <h1 className="text-4xl font-semibold tracking-[-0.04em]">{product.name}</h1>
+                <h1 className="text-4xl font-semibold tracking-[-0.04em]">{displayName}</h1>
                 <p className="mt-2 text-xl font-medium text-textSecondary">{product.unit}, Price</p>
               </div>
               <button

@@ -17,57 +17,52 @@ If you are developing a production application, we recommend updating the config
 
 ```js
 export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+  # Nectar Grocery
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+  Live URL: https://your-live-url-here.example
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
+  ## Tech Stack
+
+  - React 19
+  - TypeScript
+  - Vite
+  - Tailwind CSS v4 with `@tailwindcss/vite`
+  - Zustand for client state
+  - React Router DOM for routing
+
+  ## Run Locally
+
+  1. Install dependencies:
+
+  ```bash
+  npm install
+  ```
+
+  2. Start the dev server:
+
+  ```bash
+  npm run dev
+  ```
+
+  3. Build for production:
+
+  ```bash
+  npm run build
+  ```
+
+  4. Preview the production build:
+
+  ```bash
+  npm run preview
+  ```
+
+  ## Architecture Notes
+
+  - `src/App.tsx` defines the route map and splits auth, main app, checkout, and standalone flows.
+  - `src/components/layout` holds the shared shell components for desktop and mobile navigation.
+  - `src/components/ui` contains reusable primitives like buttons, cards, loaders, and selectors.
+  - `src/pages/auth`, `src/pages/main`, and `src/pages/checkout` organize screen-level UI by flow.
+  - `src/store` contains Zustand stores for cart, favorites, auth, filters, and order state.
+  - `src/data` provides mock product and category data with simulated async fetch helpers.
+  - `src/hooks` contains shared hooks such as debounce and simulated fetch loading/error state.
       },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```

@@ -45,7 +45,9 @@ export default function ExploreScreen() {
                 style={{ backgroundColor: category.bgColor, borderColor: category.borderColor }}
               >
                 <img src={category.image} alt={category.name} className="h-32 w-full object-contain" />
-                <p className="mt-4 text-lg font-semibold tracking-[-0.02em] text-textPrimary">{category.name}</p>
+                <p className="mt-4 text-lg font-semibold tracking-[-0.02em] text-textPrimary">
+                  {category.id === 'fresh-fruits-vegetables' ? 'Frash Fruits & Vegetable' : category.name}
+                </p>
               </Link>
             ))}
           </div>
