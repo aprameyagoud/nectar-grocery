@@ -2,8 +2,6 @@ import { useNavigate } from 'react-router-dom'
 
 import type { Product } from '../../types'
 
-import { StarRating } from './StarRating'
-
 interface ProductCardProps {
   product: Product
 }
@@ -31,14 +29,7 @@ export function ProductCard({ product }: ProductCardProps) {
       <div className="mt-4 flex flex-1 flex-col">
         <div className="space-y-1">
           <h3 className="text-base font-semibold text-textPrimary">{product.name}</h3>
-          <p className="text-xs text-textSecondary">
-            {product.unit} Price
-            {product.brand ? ` · ${product.brand}` : ''}
-          </p>
-        </div>
-
-        <div className="mt-2">
-          <StarRating rating={product.rating} />
+          <p className="text-xs text-textSecondary">{product.unit}, Price</p>
         </div>
 
         <div className="mt-4 flex items-end justify-between">

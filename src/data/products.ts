@@ -3,7 +3,7 @@ import { ProductCategory, type Product } from '../types'
 const createImageUrl = (name: string) =>
   `https://placehold.co/300x300/F3F3F3/333333?text=${encodeURIComponent(name)}`
 
-const products: Product[] = [
+export const products: Product[] = [
   {
     id: 'organic-bananas',
     name: 'Organic Bananas',
@@ -139,6 +139,7 @@ const products: Product[] = [
     rating: 4.7,
     reviewCount: 241,
     inStock: true,
+    brand: 'Cocola',
   },
   {
     id: 'pepsi-can',
