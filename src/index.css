@@ -38,6 +38,26 @@ select {
   font: inherit;
 }
 
+button,
+[role='button'] {
+  transition-property: all;
+  transition-duration: 200ms;
+}
+
+button:active,
+[role='button']:active {
+  transform: scale(0.95);
+}
+
+button:focus-visible,
+[role='button']:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #4caf50;
+}
+
 #root {
   min-height: 100vh;
 }

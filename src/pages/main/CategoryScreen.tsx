@@ -23,7 +23,7 @@ const categoryLookup: Record<string, ProductCategory> = {
 function CategorySkeleton() {
   return (
     <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-      {Array.from({ length: 8 }).map((_, index) => (
+      {Array.from({ length: 4 }).map((_, index) => (
         <Skeleton key={index} className="h-[330px] rounded-2xl" />
       ))}
     </div>
@@ -79,18 +79,18 @@ export default function CategoryScreen() {
 
         <main className="min-w-0 flex-1">
           <div className="flex items-center justify-between px-1 py-2 lg:hidden">
-            <button type="button" onClick={() => navigate(-1)} className="inline-flex h-10 w-10 items-center justify-center text-textPrimary">
+            <button type="button" aria-label="Go back" onClick={() => navigate(-1)} className="inline-flex h-10 w-10 items-center justify-center text-textPrimary">
               <BackArrowIcon />
             </button>
             <h1 className="text-2xl font-semibold tracking-[-0.03em]">{categoryName}</h1>
-            <button type="button" onClick={() => navigate('/filters')} className="inline-flex h-10 w-10 items-center justify-center text-textPrimary">
+            <button type="button" aria-label="Open filters" onClick={() => navigate('/filters')} className="inline-flex h-10 w-10 items-center justify-center text-textPrimary">
               <FilterIcon />
             </button>
           </div>
 
           <div className="hidden items-center justify-between pb-6 lg:flex">
             <h1 className="text-4xl font-semibold tracking-[-0.04em]">{categoryName}</h1>
-            <button type="button" onClick={() => navigate('/filters')} className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-textPrimary">
+            <button type="button" aria-label="Open filters" onClick={() => navigate('/filters')} className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-textPrimary">
               <FilterIcon />
               <span>Filters</span>
             </button>

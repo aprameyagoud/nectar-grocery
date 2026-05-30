@@ -20,8 +20,13 @@ export default function FavouritesScreen() {
 
         {favorites.length === 0 ? (
           <div className="flex min-h-[50vh] flex-col items-center justify-center text-center">
-            <p className="text-2xl font-semibold tracking-[-0.03em]">No favorites yet</p>
-            <p className="mt-2 text-textSecondary">Tap the heart on a product to save it here.</p>
+            <p className="text-7xl">♡</p>
+            <p className="mt-6 text-2xl font-semibold tracking-[-0.03em]">No favourites yet</p>
+            <div className="mt-8 w-full max-w-sm">
+              <Button onClick={() => navigate('/explore')} className="rounded-full bg-primary py-4 text-lg font-semibold text-white hover:bg-primary-dark">
+                Explore Products
+              </Button>
+            </div>
           </div>
         ) : (
           <div className="mt-2 divide-y divide-border">
@@ -45,18 +50,20 @@ export default function FavouritesScreen() {
           </div>
         )}
 
-        <div className="mt-10">
-          <Button
-            onClick={() => {
-              favorites.forEach((product) => addToCart(product))
-              addAllToCart()
-              navigate('/cart')
-            }}
-            className="rounded-full bg-primary py-4 text-lg font-semibold text-white shadow-[0_12px_24px_rgba(76,175,80,0.25)] hover:bg-primary-dark"
-          >
-            Add All To Cart
-          </Button>
-        </div>
+        {favorites.length > 0 ? (
+          <div className="mt-10">
+            <Button
+              onClick={() => {
+                favorites.forEach((product) => addToCart(product))
+                addAllToCart()
+                navigate('/cart')
+              }}
+              className="rounded-full bg-primary py-4 text-lg font-semibold text-white shadow-[0_12px_24px_rgba(76,175,80,0.25)] hover:bg-primary-dark"
+            >
+              Add All To Cart
+            </Button>
+          </div>
+        ) : null}
       </div>
     </div>
   )

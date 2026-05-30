@@ -13,10 +13,10 @@ function EmptyCartState() {
   return (
     <div className="flex min-h-[60vh] flex-col items-center justify-center text-center">
       <div className="text-8xl">🛒</div>
-      <p className="mt-6 text-3xl font-semibold tracking-[-0.03em] text-textPrimary">No items yet</p>
+      <p className="mt-6 text-3xl font-semibold tracking-[-0.03em] text-textPrimary">Your cart is empty</p>
       <div className="mt-8 w-full max-w-sm">
         <Button onClick={() => navigate('/home')} className="rounded-full bg-primary py-4 text-lg font-semibold text-white hover:bg-primary-dark">
-          Go to Shop
+          Start Shopping
         </Button>
       </div>
     </div>

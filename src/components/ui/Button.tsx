@@ -18,7 +18,7 @@ export function Button({ variant = 'primary', className = '', children, type = '
   return (
     <button
       type={type}
-      className={`inline-flex items-center justify-center transition-colors disabled:cursor-not-allowed disabled:opacity-60 ${variantClasses[variant]} ${className}`.trim()}
+      className={`inline-flex items-center justify-center transition-all duration-200 active:scale-95 disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus:ring-2 focus:ring-primary ${variantClasses[variant]} ${className}`.trim()}
       {...props}
     >
       {children}

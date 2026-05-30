@@ -45,7 +45,10 @@ export default function OrderSuccessScreen() {
 
           <button
             type="button"
-            onClick={() => navigate('/home')}
+            onClick={() => {
+              clearCart()
+              navigate('/home')
+            }}
             className="text-2xl font-semibold text-textPrimary transition-colors hover:text-primary"
           >
             Back to home

@@ -58,7 +58,7 @@ export default function ProductDetailScreen() {
     <div className="min-h-screen bg-background text-textPrimary">
       <div className="mx-auto max-w-7xl px-4 pb-28 pt-4 sm:px-6 lg:px-8 lg:pb-8">
         <div className="flex items-center justify-between">
-          <button type="button" onClick={() => navigate(-1)} className="inline-flex h-10 w-10 items-center justify-center text-textPrimary">
+          <button type="button" aria-label="Go back" onClick={() => navigate(-1)} className="inline-flex h-10 w-10 items-center justify-center text-textPrimary">
             <BackArrowIcon />
           </button>
           <button type="button" className="inline-flex h-10 w-10 items-center justify-center text-textPrimary" aria-label="Share product">
@@ -98,13 +98,13 @@ export default function ProductDetailScreen() {
 
             <div className="mt-10 flex items-center justify-between gap-4">
               <div className="flex items-center gap-5">
-                <button type="button" onClick={() => setQuantity((current) => Math.max(1, current - 1))} className="text-3xl font-light text-textSecondary">
+                <button type="button" aria-label="Decrease quantity" onClick={() => setQuantity((current) => Math.max(1, current - 1))} className="text-3xl font-light text-textSecondary">
                   <MinusIcon className="h-5 w-5" />
                 </button>
                 <div className="flex h-14 w-16 items-center justify-center rounded-2xl border border-border bg-white text-2xl font-semibold text-textPrimary">
                   {quantity}
                 </div>
-                <button type="button" onClick={() => setQuantity((current) => current + 1)} className="text-primary">
+                <button type="button" aria-label="Increase quantity" onClick={() => setQuantity((current) => current + 1)} className="text-primary">
                   <PlusIcon className="h-7 w-7" />
                 </button>
               </div>
@@ -113,7 +113,7 @@ export default function ProductDetailScreen() {
 
             <hr className="my-8 border-border" />
 
-            <button type="button" onClick={() => setShowDetails((current) => !current)} className="flex w-full items-center justify-between py-1 text-left">
+            <button type="button" aria-label="Toggle product details" onClick={() => setShowDetails((current) => !current)} className="flex w-full items-center justify-between py-1 text-left">
               <span className="text-2xl font-semibold tracking-[-0.03em]">Product Detail</span>
               <ChevronDownIcon className={`h-6 w-6 transition-transform ${showDetails ? 'rotate-180' : ''}`} />
             </button>

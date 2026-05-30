@@ -20,7 +20,7 @@ export function ProductCard({ product }: ProductCardProps) {
           navigate(`/product/${product.id}`)
         }
       }}
-      className="flex h-full cursor-pointer flex-col rounded-2xl border border-border bg-white p-4 shadow-sm transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md"
+      className="flex h-full cursor-pointer flex-col rounded-2xl border border-border bg-white p-4 shadow-sm transition-shadow duration-200 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
     >
       <div className="flex h-32 items-center justify-center overflow-hidden rounded-xl bg-surface">
         <img src={product.image} alt={product.name} className="h-32 w-full object-contain p-3" />

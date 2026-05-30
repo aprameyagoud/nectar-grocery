@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { Button } from '../../components/ui/Button'
@@ -12,11 +13,18 @@ export function OrderFailedModal({
   onTryAgain: () => void
 }) {
   const navigate = useNavigate()
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => setIsVisible(true))
+
+    return () => window.cancelAnimationFrame(frame)
+  }, [])
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 px-4">
-      <div className="relative w-full max-w-md rounded-3xl bg-white px-6 pb-8 pt-6 text-center shadow-[0_24px_80px_rgba(0,0,0,0.18)]">
-        <button type="button" onClick={onClose} className="inline-flex h-10 w-10 items-center justify-center text-textPrimary" aria-label="Close failure dialog">
+    <div className={`fixed inset-0 z-[60] flex items-center justify-center bg-black/50 px-4 transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`relative w-full max-w-md rounded-3xl bg-white px-6 pb-8 pt-6 text-center shadow-[0_24px_80px_rgba(0,0,0,0.18)] transition-all duration-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+        <button type="button" onClick={onClose} className="inline-flex h-10 w-10 items-center justify-center text-textPrimary focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Close failure dialog">
           <CloseIcon className="h-8 w-8" />
         </button>
 

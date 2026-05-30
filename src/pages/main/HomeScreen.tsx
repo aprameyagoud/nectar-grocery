@@ -20,20 +20,16 @@ const groceryPills = [
   { label: 'Oil', image: 'https://placehold.co/160x90/FFF0E2/333333?text=Oil', bg: '#FFF0E2' },
 ]
 
-function SectionSkeleton() {
+function ProductCardSkeleton() {
   return (
-    <div className="grid gap-4 md:grid-cols-4">
-      {Array.from({ length: 4 }).map((_, index) => (
-        <div key={index} className="rounded-2xl border border-border bg-white p-4 shadow-sm">
-          <Skeleton className="h-32 w-full rounded-xl" />
-          <Skeleton className="mt-4 h-5 w-3/4 rounded-full" />
-          <Skeleton className="mt-2 h-4 w-1/2 rounded-full" />
-          <div className="mt-4 flex items-end justify-between">
-            <Skeleton className="h-6 w-16 rounded-full" />
-            <Skeleton className="h-10 w-10 rounded-xl" />
-          </div>
-        </div>
-      ))}
+    <div className="rounded-2xl border border-border bg-white p-4 shadow-sm">
+      <Skeleton className="h-32 w-full rounded-xl" />
+      <Skeleton className="mt-4 h-5 w-3/4 rounded-full" />
+      <Skeleton className="mt-2 h-4 w-1/2 rounded-full" />
+      <div className="mt-4 flex items-end justify-between">
+        <Skeleton className="h-6 w-16 rounded-full" />
+        <Skeleton className="h-10 w-10 rounded-xl" />
+      </div>
     </div>
   )
 }
@@ -137,80 +133,94 @@ export default function HomeScreen() {
               </div>
             </section>
 
-            <section className="mt-8">
-              <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-semibold tracking-[-0.03em]">Exclusive Offer</h2>
-                <Link to="/explore" className="text-base font-medium text-primary">
-                  See all
-                </Link>
-              </div>
-              <div className="mt-4 lg:hidden">
-                {productsLoading ? <SectionSkeleton /> : <HorizontalProductRail items={exclusive} />}
-              </div>
-              <div className="mt-4 hidden lg:block">
-                {productsLoading ? <SectionSkeleton /> : <div className="grid grid-cols-4 gap-4">{exclusive.map((product) => <ProductCard key={product.id} product={product} />)}</div>}
-              </div>
-            </section>
-
-            <section className="mt-8">
-              <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-semibold tracking-[-0.03em]">Best Selling</h2>
-                <Link to="/explore" className="text-base font-medium text-primary">
-                  See all
-                </Link>
-              </div>
-              <div className="mt-4 lg:hidden">
-                {productsLoading ? <SectionSkeleton /> : <HorizontalProductRail items={bestSelling} />}
-              </div>
-              <div className="mt-4 hidden lg:block">
-                {productsLoading ? <SectionSkeleton /> : <div className="grid grid-cols-4 gap-4">{bestSelling.map((product) => <ProductCard key={product.id} product={product} />)}</div>}
-              </div>
-            </section>
-
-            <section className="mt-8">
-              <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-semibold tracking-[-0.03em]">Groceries</h2>
-                <Link to="/explore" className="text-base font-medium text-primary">
-                  See all
-                </Link>
-              </div>
-              <div className="mt-4 flex gap-4 overflow-x-auto pb-2 lg:grid lg:grid-cols-4 lg:overflow-visible">
-                {groceryPills.map((pill) => (
-                  <CategoryPill key={pill.label} {...pill} />
-                ))}
-              </div>
-            </section>
-
-            <section className="mt-8 pb-10">
-              {productsLoading ? (
-                <SectionSkeleton />
-              ) : (
-                <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
-                  {gridProducts.map((product) => (
-                    <ProductCard key={product.id} product={product} />
+            {productsLoading ? (
+              <section className="mt-8">
+                <div className="grid grid-cols-2 gap-4">
+                  {Array.from({ length: 4 }).map((_, index) => (
+                    <ProductCardSkeleton key={index} />
                   ))}
                 </div>
-              )}
-            </section>
+              </section>
+            ) : (
+              <>
+                <section className="mt-8">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-2xl font-semibold tracking-[-0.03em]">Exclusive Offer</h2>
+                    <Link to="/explore" className="text-base font-medium text-primary">
+                      See all
+                    </Link>
+                  </div>
+                  <div className="mt-4 lg:hidden">
+                    <HorizontalProductRail items={exclusive} />
+                  </div>
+                  <div className="mt-4 hidden lg:block">
+                    <div className="grid grid-cols-4 gap-4">
+                      {exclusive.map((product) => (
+                        <ProductCard key={product.id} product={product} />
+                      ))}
+                    </div>
+                  </div>
+                </section>
 
-            <section className="mt-10 hidden lg:block">
-              <div className="grid grid-cols-4 gap-4">
-                {categoriesLoading
-                  ? Array.from({ length: 4 }).map((_, index) => (
-                      <Skeleton key={index} className="h-24 rounded-[22px]" />
-                    ))
-                  : categories.map((category) => (
-                      <Link
-                        key={category.id}
-                        to={`/category/${category.id}`}
-                        className="rounded-[22px] border px-5 py-4 text-base font-medium"
-                        style={{ backgroundColor: category.bgColor, borderColor: category.borderColor }}
-                      >
-                        {category.name}
-                      </Link>
+                <section className="mt-8">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-2xl font-semibold tracking-[-0.03em]">Best Selling</h2>
+                    <Link to="/explore" className="text-base font-medium text-primary">
+                      See all
+                    </Link>
+                  </div>
+                  <div className="mt-4 lg:hidden">
+                    <HorizontalProductRail items={bestSelling} />
+                  </div>
+                  <div className="mt-4 hidden lg:block">
+                    <div className="grid grid-cols-4 gap-4">
+                      {bestSelling.map((product) => (
+                        <ProductCard key={product.id} product={product} />
+                      ))}
+                    </div>
+                  </div>
+                </section>
+
+                <section className="mt-8">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-2xl font-semibold tracking-[-0.03em]">Groceries</h2>
+                    <Link to="/explore" className="text-base font-medium text-primary">
+                      See all
+                    </Link>
+                  </div>
+                  <div className="mt-4 flex gap-4 overflow-x-auto pb-2 lg:grid lg:grid-cols-4 lg:overflow-visible">
+                    {groceryPills.map((pill) => (
+                      <CategoryPill key={pill.label} {...pill} />
                     ))}
-              </div>
-            </section>
+                  </div>
+                </section>
+
+                <section className="mt-8 pb-10">
+                  <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
+                    {gridProducts.map((product) => (
+                      <ProductCard key={product.id} product={product} />
+                    ))}
+                  </div>
+                </section>
+
+                <section className="mt-10 hidden lg:block">
+                  <div className="grid grid-cols-4 gap-4">
+                    {categoriesLoading
+                      ? Array.from({ length: 4 }).map((_, index) => <Skeleton key={index} className="h-24 rounded-[22px]" />)
+                      : categories.map((category) => (
+                          <Link
+                            key={category.id}
+                            to={`/category/${category.id}`}
+                            className="rounded-[22px] border px-5 py-4 text-base font-medium"
+                            style={{ backgroundColor: category.bgColor, borderColor: category.borderColor }}
+                          >
+                            {category.name}
+                          </Link>
+                        ))}
+                  </div>
+                </section>
+              </>
+            )}
           </div>
         </main>
       </div>

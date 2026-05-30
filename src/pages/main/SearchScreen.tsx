@@ -14,7 +14,7 @@ import { CloseIcon, FilterIcon, SearchIcon } from './mainIcons'
 function SearchSkeleton() {
   return (
     <div className="grid grid-cols-2 gap-4">
-      {Array.from({ length: 6 }).map((_, index) => (
+      {Array.from({ length: 4 }).map((_, index) => (
         <Skeleton key={index} className="h-[330px] rounded-2xl" />
       ))}
     </div>
@@ -56,10 +56,12 @@ export default function SearchScreen() {
           <SearchIcon className="h-6 w-6 text-textPrimary" />
           <input
             ref={inputRef}
+            id="search-store"
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search Store"
+            aria-label="Search Store"
             className="w-full bg-transparent text-lg text-textPrimary outline-none placeholder:text-textSecondary"
           />
           {query ? (
@@ -83,8 +85,8 @@ export default function SearchScreen() {
             </div>
           ) : (
             <div className="flex min-h-[40vh] flex-col items-center justify-center rounded-[28px] border border-border bg-white text-center">
-              <p className="text-2xl font-semibold tracking-[-0.03em]">No products found</p>
-              <p className="mt-2 text-textSecondary">Try another search term.</p>
+              <p className="text-5xl">🔍</p>
+              <p className="mt-4 text-2xl font-semibold tracking-[-0.03em]">No products found for '{query}'</p>
             </div>
           )}
         </div>

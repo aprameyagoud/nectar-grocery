@@ -24,7 +24,7 @@ function PersonIcon() {
 }
 
 const linkClassName = ({ isActive }: { isActive: boolean }) =>
-  `flex flex-col items-center justify-center gap-1 text-xs font-medium transition-colors ${
+  `flex flex-col items-center justify-center gap-1 text-xs font-medium transition-colors duration-200 ${
     isActive ? 'text-primary' : 'text-textSecondary'
   }`
 

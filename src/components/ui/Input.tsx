@@ -35,7 +35,7 @@ export function Input({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full border-0 border-b border-border bg-transparent px-0 py-3 text-base text-textPrimary outline-none transition-colors placeholder:text-textSecondary focus:border-primary"
+        className="w-full border-0 border-b border-border bg-transparent px-0 py-3 text-base text-textPrimary outline-none transition-colors placeholder:text-textSecondary focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
         {...props}
       />
       {error ? <span className="mt-2 block text-sm text-red-500">{error}</span> : null}
