@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 import { Button } from '../../components/ui/Button'
 import { StarRating } from '../../components/ui/StarRating'
@@ -7,6 +7,7 @@ import { fetchProducts } from '../../data/products'
 import { useCartStore } from '../../store/cartStore'
 import { useFavoritesStore } from '../../store/favoritesStore'
 import { useSimulatedFetch } from '../../hooks/useSimulatedFetch'
+import { useSmartBack } from '../../hooks/useSmartBack'
 import type { Product } from '../../types'
 
 import {
@@ -35,7 +36,7 @@ function ProductDetailSkeleton() {
 }
 
 export default function ProductDetailScreen() {
-  const navigate = useNavigate()
+  const goBack = useSmartBack('/home')
   const { id = '' } = useParams<{ id: string }>()
   const { data: fetchedProducts, loading } = useSimulatedFetch(fetchProducts)
   const products = fetchedProducts ?? []
@@ -60,7 +61,7 @@ export default function ProductDetailScreen() {
     <div className="min-h-screen bg-background text-textPrimary">
       <div className="mx-auto max-w-7xl px-4 pb-28 pt-4 sm:px-6 lg:px-8 lg:pb-8">
         <div className="flex items-center justify-between">
-          <button type="button" aria-label="Go back" onClick={() => navigate(-1)} className="inline-flex h-10 w-10 items-center justify-center text-textPrimary">
+          <button type="button" aria-label="Go back" onClick={goBack} className="inline-flex h-10 w-10 items-center justify-center text-textPrimary">
             <BackArrowIcon />
           </button>
           <button type="button" className="inline-flex h-10 w-10 items-center justify-center text-textPrimary" aria-label="Share product">

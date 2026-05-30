@@ -1,12 +1,15 @@
 import { useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { AuthLayout } from '../../components/layout/AuthLayout'
 
 import { CarrotIcon, CheckIcon, EyeIcon, EyeOffIcon } from './authIcons'
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const groceryHero = 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80'
 
 export default function SignUpScreen() {
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState('imshuvo97@gmail.com')
 
@@ -19,7 +22,18 @@ export default function SignUpScreen() {
           <CarrotIcon className="mx-auto h-12 w-12 text-primary" />
         </div>
 
-        <div className="mt-24">
+        <figure className="mt-8 overflow-hidden rounded-[28px] border border-border bg-[#FAF7F0] shadow-[0_18px_40px_rgba(17,24,39,0.08)]">
+          <img
+            src={groceryHero}
+            alt="Fresh groceries packed for home delivery"
+            className="h-40 w-full object-cover object-center"
+          />
+          <figcaption className="px-5 py-4 text-sm font-medium text-textSecondary">
+            Build your account to start ordering
+          </figcaption>
+        </figure>
+
+        <div className="mt-10">
           <h1 className="text-3xl font-semibold tracking-[-0.04em] text-textPrimary sm:text-[2.2rem]">Sign Up</h1>
           <p className="mt-2 text-lg text-textSecondary">Enter your credentials to continue</p>
 
@@ -74,6 +88,7 @@ export default function SignUpScreen() {
 
           <button
             type="button"
+            onClick={() => navigate('/location')}
             className="mt-8 w-full rounded-full bg-primary py-4 text-lg font-semibold text-white shadow-[0_12px_24px_rgba(76,175,80,0.25)] transition-colors hover:bg-primary-dark"
           >
             Sing Up
@@ -81,8 +96,8 @@ export default function SignUpScreen() {
 
           <p className="mt-6 text-center text-base text-textPrimary">
             Already have an account?{' '}
-            <button type="button" className="font-semibold text-primary transition-colors hover:text-primary-dark">
-              Singup
+            <button type="button" onClick={() => navigate('/signin')} className="font-semibold text-primary transition-colors hover:text-primary-dark">
+              Sign in
             </button>
           </p>
         </div>

@@ -1,16 +1,18 @@
 import { useNavigate } from 'react-router-dom'
 
 import { AuthLayout } from '../../components/layout/AuthLayout'
+import { useSmartBack } from '../../hooks/useSmartBack'
 
 import { BackArrowIcon, ChevronDownIcon, MapPinIllustration } from './authIcons'
 
 export default function LocationScreen() {
   const navigate = useNavigate()
+  const goBack = useSmartBack('/signup')
 
   return (
     <AuthLayout>
       <div className="mx-auto flex min-h-screen w-full max-w-md flex-col px-6 py-8 sm:px-8">
-        <button type="button" onClick={() => navigate(-1)} className="inline-flex h-10 w-10 items-center justify-center rounded-full text-textPrimary transition-colors hover:bg-black/5">
+        <button type="button" onClick={goBack} className="inline-flex h-10 w-10 items-center justify-center rounded-full text-textPrimary transition-colors hover:bg-black/5">
           <BackArrowIcon className="h-7 w-7" />
         </button>
 

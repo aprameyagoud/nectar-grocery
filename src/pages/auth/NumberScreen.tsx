@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { AuthLayout } from '../../components/layout/AuthLayout'
+import { useSmartBack } from '../../hooks/useSmartBack'
 
 import { BackArrowIcon, CircleArrowIcon } from './authIcons'
 
@@ -21,11 +23,31 @@ const keypadKeys = [
 
 export default function NumberScreen() {
   const navigate = useNavigate()
+  const goBack = useSmartBack('/signin')
+  const [phoneNumber, setPhoneNumber] = useState('')
+
+  const handleKeypadPress = (key: string) => {
+    setPhoneNumber((current) => {
+      if (key === '⌫') {
+        return current.slice(0, -1)
+      }
+
+      if (key === '+*#') {
+        return current
+      }
+
+      if (current.length >= 10) {
+        return current
+      }
+
+      return `${current}${key}`
+    })
+  }
 
   return (
     <AuthLayout>
       <div className="mx-auto flex min-h-screen w-full max-w-md flex-col px-6 py-8 sm:px-8">
-        <button type="button" onClick={() => navigate(-1)} className="inline-flex h-10 w-10 items-center justify-center rounded-full text-textPrimary transition-colors hover:bg-black/5">
+        <button type="button" onClick={goBack} className="inline-flex h-10 w-10 items-center justify-center rounded-full text-textPrimary transition-colors hover:bg-black/5" aria-label="Go back">
           <BackArrowIcon className="h-7 w-7" />
         </button>
 
@@ -39,8 +61,9 @@ export default function NumberScreen() {
               <span className="text-lg font-medium">+880</span>
               <input
                 type="tel"
-                defaultValue=""
-                placeholder=""
+                value={phoneNumber}
+                onChange={(event) => setPhoneNumber(event.target.value.replace(/\D/g, '').slice(0, 10))}
+                placeholder="Enter number"
                 className="w-full bg-transparent text-lg text-textPrimary outline-none"
               />
             </div>
@@ -49,8 +72,9 @@ export default function NumberScreen() {
 
         <button
           type="button"
-          onClick={() => navigate('/verification')}
-          className="fixed bottom-40 right-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white shadow-[0_12px_24px_rgba(76,175,80,0.35)] transition-colors hover:bg-primary-dark sm:right-[calc(50%-14rem)]"
+          onClick={() => navigate('/otp', { state: { phoneNumber: `+880${phoneNumber}` } })}
+          disabled={phoneNumber.length === 0}
+          className="fixed bottom-40 right-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white shadow-[0_12px_24px_rgba(76,175,80,0.35)] transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:bg-primary/40 sm:right-[calc(50%-14rem)]"
           aria-label="Continue to verification"
         >
           <CircleArrowIcon className="h-6 w-6" />
@@ -59,9 +83,15 @@ export default function NumberScreen() {
         <div className="mt-auto pb-4">
           <div className="grid grid-cols-3 gap-2 rounded-2xl bg-transparent text-center text-2xl font-medium text-textPrimary">
             {keypadKeys.map((key) => (
-              <div key={key} className="flex h-12 items-center justify-center rounded-[6px] border border-border bg-white text-base shadow-[0_2px_4px_rgba(0,0,0,0.06)]">
+              <button
+                key={key}
+                type="button"
+                onClick={() => handleKeypadPress(key)}
+                className="flex h-12 items-center justify-center rounded-[6px] border border-border bg-white text-base shadow-[0_2px_4px_rgba(0,0,0,0.06)] transition-transform active:scale-[0.98]"
+                aria-label={key === '⌫' ? 'Delete last digit' : key === '+*#' ? 'Symbols' : `Add ${key}`}
+              >
                 {key}
-              </div>
+              </button>
             ))}
           </div>
         </div>

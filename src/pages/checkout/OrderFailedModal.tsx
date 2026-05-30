@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { Button } from '../../components/ui/Button'
+import { useSmartBack } from '../../hooks/useSmartBack'
 
 import { CloseIcon } from '../main/mainIcons'
 
@@ -12,7 +12,7 @@ export function OrderFailedModal({
   onClose: () => void
   onTryAgain: () => void
 }) {
-  const navigate = useNavigate()
+  const goBack = useSmartBack('/cart')
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -46,10 +46,10 @@ export function OrderFailedModal({
 
         <button
           type="button"
-          onClick={() => navigate('/home')}
+          onClick={goBack}
           className="mt-6 text-2xl font-semibold text-textPrimary transition-colors hover:text-primary"
         >
-          Back to home
+          Back to cart
         </button>
       </div>
     </div>

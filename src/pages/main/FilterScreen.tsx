@@ -1,5 +1,4 @@
-import { useNavigate } from 'react-router-dom'
-
+import { useSmartBack } from '../../hooks/useSmartBack'
 import { useFilterStore } from '../../store/filterStore'
 
 import { CheckIcon, CloseIcon } from './mainIcons'
@@ -51,7 +50,7 @@ function FilterSection({
 }
 
 export default function FilterScreen() {
-  const navigate = useNavigate()
+  const goBack = useSmartBack('/home')
   const selectedCategories = useFilterStore((state) => state.selectedCategories)
   const selectedBrands = useFilterStore((state) => state.selectedBrands)
   const toggleCategory = useFilterStore((state) => state.toggleCategory)
@@ -60,7 +59,7 @@ export default function FilterScreen() {
     <div className="min-h-screen bg-white px-4 pb-6 pt-4 text-textPrimary sm:px-6 lg:px-8">
       <div className="mx-auto flex min-h-screen max-w-md flex-col">
         <div className="flex items-center justify-between">
-          <button type="button" onClick={() => navigate(-1)} className="inline-flex h-12 w-12 items-center justify-center text-textPrimary">
+          <button type="button" onClick={goBack} className="inline-flex h-12 w-12 items-center justify-center text-textPrimary">
             <CloseIcon className="h-8 w-8" />
           </button>
           <h1 className="text-2xl font-semibold tracking-[-0.03em]">Filters</h1>
@@ -85,7 +84,7 @@ export default function FilterScreen() {
 
         <button
           type="button"
-          onClick={() => navigate(-1)}
+          onClick={goBack}
           className="mt-auto w-full rounded-full bg-primary py-4 text-lg font-semibold text-white shadow-[0_12px_24px_rgba(76,175,80,0.25)] transition-colors hover:bg-primary-dark"
         >
           Apply Filter

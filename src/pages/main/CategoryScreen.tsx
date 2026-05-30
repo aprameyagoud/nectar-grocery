@@ -6,6 +6,7 @@ import { fetchCategories } from '../../data/categories'
 import { fetchProductsByCategory } from '../../data/products'
 import { useFilterStore } from '../../store/filterStore'
 import { useSimulatedFetch } from '../../hooks/useSimulatedFetch'
+import { useSmartBack } from '../../hooks/useSmartBack'
 import { filterProducts } from '../../utils/productFilters'
 import { ProductCategory, type Product } from '../../types'
 
@@ -32,6 +33,7 @@ function CategorySkeleton() {
 
 export default function CategoryScreen() {
   const navigate = useNavigate()
+  const goBack = useSmartBack('/explore')
   const { id = 'beverages' } = useParams<{ id: string }>()
   const routeCategory = categoryLookup[id] ?? ProductCategory.BEVERAGES
   const { data: fetchedCategories } = useSimulatedFetch(fetchCategories)
@@ -79,7 +81,7 @@ export default function CategoryScreen() {
 
         <main className="min-w-0 flex-1">
           <div className="flex items-center justify-between px-1 py-2 lg:hidden">
-            <button type="button" aria-label="Go back" onClick={() => navigate(-1)} className="inline-flex h-10 w-10 items-center justify-center text-textPrimary">
+            <button type="button" aria-label="Go back" onClick={goBack} className="inline-flex h-10 w-10 items-center justify-center text-textPrimary">
               <BackArrowIcon />
             </button>
             <h1 className="text-2xl font-semibold tracking-[-0.03em]">{categoryName}</h1>

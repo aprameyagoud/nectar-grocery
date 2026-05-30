@@ -30,6 +30,7 @@ function App() {
         <Route path="/signin" element={<SignInScreen />} />
         <Route path="/number" element={<NumberScreen />} />
         <Route path="/verification" element={<VerificationScreen />} />
+        <Route path="/otp" element={<VerificationScreen />} />
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/signup" element={<SignUpScreen />} />
         <Route path="/location" element={<LocationScreen />} />

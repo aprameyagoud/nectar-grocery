@@ -1,16 +1,23 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import { AuthLayout } from '../../components/layout/AuthLayout'
+import { useSmartBack } from '../../hooks/useSmartBack'
 
 import { BackArrowIcon, CircleArrowIcon } from './authIcons'
 
 export default function VerificationScreen() {
   const navigate = useNavigate()
+  const location = useLocation()
+  const goBack = useSmartBack('/number')
   const [code, setCode] = useState(['', '', '', ''])
   const inputRefs = useRef<Array<HTMLInputElement | null>>([])
 
   const codeDisplay = useMemo(() => code.map((digit) => digit || '-').join(' '), [code])
+  const phoneNumber = typeof location.state === 'object' && location.state && 'phoneNumber' in location.state
+    ? String(location.state.phoneNumber)
+    : '+880'
+  const isComplete = code.every((digit) => digit.length === 1)
 
   useEffect(() => {
     inputRefs.current[0]?.focus()
@@ -36,12 +43,13 @@ export default function VerificationScreen() {
   return (
     <AuthLayout>
       <div className="mx-auto flex min-h-screen w-full max-w-md flex-col px-6 py-8 sm:px-8">
-        <button type="button" onClick={() => navigate(-1)} className="inline-flex h-10 w-10 items-center justify-center rounded-full text-textPrimary transition-colors hover:bg-black/5">
+        <button type="button" onClick={goBack} className="inline-flex h-10 w-10 items-center justify-center rounded-full text-textPrimary transition-colors hover:bg-black/5">
           <BackArrowIcon className="h-7 w-7" />
         </button>
 
         <div className="mt-12">
           <h1 className="text-3xl font-semibold tracking-[-0.04em] text-textPrimary sm:text-[2.2rem]">Enter your 4-digit code</h1>
+          <p className="mt-3 text-base text-textSecondary">We sent a code to {phoneNumber}</p>
           <label className="mt-10 block text-lg font-medium text-textSecondary">Code</label>
 
           <div className="mt-4 flex items-center gap-2 border-b border-border pb-3 text-2xl tracking-[0.2em] text-textPrimary">
@@ -66,7 +74,8 @@ export default function VerificationScreen() {
         <button
           type="button"
           onClick={() => navigate('/signup')}
-          className="fixed bottom-40 right-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white shadow-[0_12px_24px_rgba(76,175,80,0.35)] transition-colors hover:bg-primary-dark sm:right-[calc(50%-14rem)]"
+          disabled={!isComplete}
+          className="fixed bottom-40 right-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white shadow-[0_12px_24px_rgba(76,175,80,0.35)] transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:bg-primary/40 sm:right-[calc(50%-14rem)]"
           aria-label="Continue to signup"
         >
           <CircleArrowIcon className="h-6 w-6" />
