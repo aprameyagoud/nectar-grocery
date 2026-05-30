@@ -2,10 +2,11 @@ import type { ChangeEvent, KeyboardEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { AuthLayout } from '../../components/layout/AuthLayout'
+import heroImage from '../../assets/hero.png'
 
 import { CarrotIcon, FacebookIcon, GlobeIcon, GoogleIcon } from './authIcons'
 
-const groceryHero = 'https://loremflickr.com/1200/800/grocery-delivery'
+const groceryHero = heroImage
 
 export default function SignInScreen() {
   const navigate = useNavigate()

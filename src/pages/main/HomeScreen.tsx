@@ -6,6 +6,7 @@ import { fetchCategories } from '../../data/categories'
 import { fetchProducts } from '../../data/products'
 import { useSimulatedFetch } from '../../hooks/useSimulatedFetch'
 import type { Category, Product } from '../../types'
+import heroImage from '../../assets/hero.png'
 
 import {
   CarrotSmallIcon,
@@ -121,7 +122,7 @@ export default function HomeScreen() {
                   <p className="text-sm font-medium text-primary-dark md:text-lg">Get Up To 40% OFF</p>
                 </div>
                 <img
-                  src="https://loremflickr.com/900/900/fresh-vegetables"
+                  src={heroImage}
                   alt="Fresh vegetables and produce"
                   className="h-28 w-28 rounded-2xl object-cover md:h-40 md:w-40"
                 />

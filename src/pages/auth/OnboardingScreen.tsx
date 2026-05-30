@@ -1,8 +1,10 @@
 import { useNavigate } from 'react-router-dom'
 
+import heroImage from '../../assets/hero.png'
+
 import { CarrotIcon } from './authIcons'
 
-const onboardingImage = 'https://loremflickr.com/1200/1600/delivery-person-groceries'
+const onboardingImage = heroImage
 
 export default function OnboardingScreen() {
   const navigate = useNavigate()

@@ -2,11 +2,12 @@ import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { AuthLayout } from '../../components/layout/AuthLayout'
+import heroImage from '../../assets/hero.png'
 
 import { CarrotIcon, CheckIcon, EyeIcon, EyeOffIcon } from './authIcons'
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-const groceryHero = 'https://loremflickr.com/1200/800/grocery-delivery'
+const groceryHero = heroImage
 
 export default function SignUpScreen() {
   const navigate = useNavigate()
