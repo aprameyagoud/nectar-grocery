@@ -5,7 +5,7 @@ import { AuthLayout } from '../../components/layout/AuthLayout'
 
 import { CarrotIcon, FacebookIcon, GlobeIcon, GoogleIcon } from './authIcons'
 
-const groceryHero = 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80'
+const groceryHero = 'https://loremflickr.com/1200/800/grocery-delivery'
 
 export default function SignInScreen() {
   const navigate = useNavigate()

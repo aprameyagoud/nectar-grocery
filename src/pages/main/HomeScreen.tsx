@@ -14,10 +14,10 @@ import {
 } from './mainIcons'
 
 const groceryPills = [
-  { label: 'Pulses', image: 'https://placehold.co/160x90/F9E9D5/333333?text=Pulses', bg: '#F9E9D5' },
-  { label: 'Rice', image: 'https://placehold.co/160x90/E4F1E9/333333?text=Rice', bg: '#E4F1E9' },
-  { label: 'Flour', image: 'https://placehold.co/160x90/F1E6FB/333333?text=Flour', bg: '#F1E6FB' },
-  { label: 'Oil', image: 'https://placehold.co/160x90/FFF0E2/333333?text=Oil', bg: '#FFF0E2' },
+  { label: 'Pulses', image: 'https://loremflickr.com/160/90/lentils', bg: '#F9E9D5' },
+  { label: 'Rice', image: 'https://loremflickr.com/160/90/rice', bg: '#E4F1E9' },
+  { label: 'Flour', image: 'https://loremflickr.com/160/90/flour', bg: '#F1E6FB' },
+  { label: 'Oil', image: 'https://loremflickr.com/160/90/olive-oil', bg: '#FFF0E2' },
 ]
 
 function ProductCardSkeleton() {
@@ -121,8 +121,8 @@ export default function HomeScreen() {
                   <p className="text-sm font-medium text-primary-dark md:text-lg">Get Up To 40% OFF</p>
                 </div>
                 <img
-                  src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80"
-                  alt="Fresh vegetables"
+                  src="https://loremflickr.com/900/900/fresh-vegetables"
+                  alt="Fresh vegetables and produce"
                   className="h-28 w-28 rounded-2xl object-cover md:h-40 md:w-40"
                 />
               </div>

@@ -1,51 +1,47 @@
 import type { Category } from '../types'
 
-const createCategoryImage = (label: string, bgColor: string) => {
-  const cleanedLabel = label.replace(/&/g, 'and')
-
-  return `https://placehold.co/300x300/${bgColor.replace('#', '')}/333333?text=${encodeURIComponent(cleanedLabel)}`
-}
+const createCategoryImage = (query: string) => `https://loremflickr.com/300/300/${encodeURIComponent(query)}`
 
 const categories: Category[] = [
   {
     id: 'fresh-fruits-vegetables',
     name: 'Fresh Fruits & Vegetable',
-    image: createCategoryImage('Fresh Fruits & Vegetable', 'F2FBF2'),
+    image: createCategoryImage('fresh fruits vegetables basket'),
     bgColor: '#F2FBF2',
     borderColor: '#B8E8B8',
   },
   {
     id: 'cooking-oil-ghee',
     name: 'Cooking Oil & Ghee',
-    image: createCategoryImage('Cooking Oil & Ghee', 'FFF8EE'),
+    image: createCategoryImage('olive oil bottle'),
     bgColor: '#FFF8EE',
     borderColor: '#FFE0A3',
   },
   {
     id: 'meat-fish',
     name: 'Meat & Fish',
-    image: createCategoryImage('Meat & Fish', 'FFF0F0'),
+    image: createCategoryImage('raw meat fish tray'),
     bgColor: '#FFF0F0',
     borderColor: '#FFB8B8',
   },
   {
     id: 'bakery-snacks',
     name: 'Bakery & Snacks',
-    image: createCategoryImage('Bakery & Snacks', 'F5F0FF'),
+    image: createCategoryImage('bread pastries basket'),
     bgColor: '#F5F0FF',
     borderColor: '#D4B8FF',
   },
   {
     id: 'dairy-eggs',
     name: 'Dairy & Eggs',
-    image: createCategoryImage('Dairy & Eggs', 'FFFDE8'),
+    image: createCategoryImage('milk eggs cheese'),
     bgColor: '#FFFDE8',
     borderColor: '#FFE88A',
   },
   {
     id: 'beverages',
     name: 'Beverages',
-    image: createCategoryImage('Beverages', 'EEF7FF'),
+    image: createCategoryImage('assorted beverages bottles cans'),
     bgColor: '#EEF7FF',
     borderColor: '#B8D8FF',
   },

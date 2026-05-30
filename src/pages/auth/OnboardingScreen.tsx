@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { CarrotIcon } from './authIcons'
 
-const onboardingImage = 'https://images.unsplash.com/photo-1506617564039-2f3b0d9c8f19?auto=format&fit=crop&w=1200&q=80'
+const onboardingImage = 'https://loremflickr.com/1200/1600/delivery-person-groceries'
 
 export default function OnboardingScreen() {
   const navigate = useNavigate()
