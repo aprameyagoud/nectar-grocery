@@ -67,11 +67,11 @@ export default function CategoryScreen() {
                 <Link
                   key={category.id}
                   to={`/category/${category.id}`}
-                  className={`flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium transition-colors ${
+                  className={`min-w-0 flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium transition-colors ${
                     isActive ? 'bg-primary/10 text-primary' : 'text-textSecondary hover:bg-surface hover:text-textPrimary'
                   }`}
                 >
-                  <span>{category.name}</span>
+                  <span className="truncate">{category.name}</span>
                   <span>›</span>
                 </Link>
               )

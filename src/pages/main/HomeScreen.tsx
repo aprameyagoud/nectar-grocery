@@ -44,9 +44,9 @@ function CategorySidebar({ categories }: { categories: Category[] }) {
           <Link
             key={category.id}
             to={`/category/${category.id}`}
-            className="flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium text-textSecondary transition-colors hover:bg-primary/5 hover:text-primary"
+            className="min-w-0 flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium text-textSecondary transition-colors hover:bg-primary/5 hover:text-primary"
           >
-            <span>{category.name}</span>
+            <span className="truncate">{category.name}</span>
             <span className="text-primary">›</span>
           </Link>
         ))}
