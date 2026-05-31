@@ -16,7 +16,7 @@ export default function FavouritesScreen() {
   return (
     <div className="min-h-screen bg-background px-4 pb-8 pt-4 text-textPrimary sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-7xl flex-col">
-        <h1 className="text-center text-4xl font-semibold tracking-[-0.04em]">Favouruite</h1>
+        <h1 className="text-center text-4xl font-semibold tracking-[-0.04em]">Favourites</h1>
         <div className="mt-6 border-t border-border" />
 
         {favorites.length === 0 ? (

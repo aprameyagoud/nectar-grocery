@@ -53,7 +53,7 @@ export function BottomNav() {
         </NavLink>
         <NavLink to="/favourites" className={linkClassName}>
           <HeartIcon />
-          <span>Favourite</span>
+          <span>Favourites</span>
         </NavLink>
         <NavLink to="/account" className={linkClassName}>
           <PersonIcon />

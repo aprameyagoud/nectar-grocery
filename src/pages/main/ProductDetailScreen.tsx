@@ -119,13 +119,13 @@ export default function ProductDetailScreen() {
             <hr className="my-8 border-border" />
 
             <button type="button" aria-label="Toggle product details" onClick={() => setShowDetails((current) => !current)} className="flex w-full items-center justify-between py-1 text-left">
-              <span className="text-2xl font-semibold tracking-[-0.03em]">Product Detail</span>
+              <span className="text-2xl font-semibold tracking-[-0.03em]">Product Details</span>
               <ChevronDownIcon className={`h-6 w-6 transition-transform ${showDetails ? 'rotate-180' : ''}`} />
             </button>
             {showDetails ? <p className="mt-4 text-lg leading-8 text-textSecondary">{product.description}</p> : null}
 
             <div className="mt-8 flex items-center justify-between border-t border-border py-5">
-              <span className="text-2xl font-semibold tracking-[-0.03em]">Nutritions</span>
+              <span className="text-2xl font-semibold tracking-[-0.03em]">Nutrition</span>
               <div className="inline-flex items-center gap-3">
                 <span className="rounded-full bg-surface px-4 py-2 text-sm font-medium text-textSecondary">100gr</span>
                 <ChevronRightIcon className="h-7 w-7 text-textPrimary" />

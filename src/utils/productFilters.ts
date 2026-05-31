@@ -10,7 +10,7 @@ const categoryFilterMap: Record<string, ProductCategory[]> = {
 
 const brandFilterMap: Record<string, string[]> = {
   'Individual Collection': ['individual collection'],
-  Cocola: ['cocola', 'coca cola'],
+  'Coca Cola': ['cocola', 'cococola', 'coca cola', 'coca-cola'],
   Ifad: ['ifad'],
   'Kazi Farmas': ['kazi farmas'],
 }

@@ -19,7 +19,7 @@ const productImageMap: Record<string, string> = {
   'orange-juice': 'orange juice.png',
   'egg-pasta': 'egg pasta.png',
   'egg-noodles': 'egg noodles.png',
-  'mayonnais-eggless': 'mayo eggless.png',
+  'mayonnaise-eggless': 'mayo eggless.png',
   'almond-milk': 'dairy.png',
   'greek-yogurt': 'dairy.png',
   'whole-wheat-bread': 'bakery and snck.png',
@@ -182,7 +182,7 @@ export const products: Product[] = [
     rating: 4.7,
     reviewCount: 241,
     inStock: true,
-    brand: 'Cocola',
+    brand: 'Coca Cola',
   },
   {
     id: 'pepsi-can',
@@ -250,8 +250,8 @@ export const products: Product[] = [
     inStock: true,
   },
   {
-    id: 'mayonnais-eggless',
-    name: 'Mayonnais Eggless',
+    id: 'mayonnaise-eggless',
+    name: 'Eggless Mayonnaise',
     description: 'Creamy eggless mayonnaise for sandwiches, dips, and dressings.',
     price: 3.99,
     image: createLocalImage('mayonnaise'),

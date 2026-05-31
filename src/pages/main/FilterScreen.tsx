@@ -5,7 +5,7 @@ import { useFilterStore } from '../../store/filterStore'
 import { CheckIcon, CloseIcon } from './mainIcons'
 
 const categoryItems = ['Eggs', 'Noodles & Pasta', 'Chips & Crisps', 'Fast Food']
-const brandItems = ['Individual Collection', 'Cocola', 'Ifad', 'Kazi Farmas']
+const brandItems = ['Individual Collection', 'Coca Cola', 'Ifad', 'Kazi Farmas']
 
 function FilterSection({
   title,

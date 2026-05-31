@@ -81,7 +81,7 @@ export default function VerificationScreen() {
             onClick={() => navigate('/signup')}
             disabled={!isComplete}
             className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-b from-[#5FCC66] to-[#3FA845] text-white shadow-[0_14px_28px_rgba(63,168,69,0.42)] ring-1 ring-[#2E7D32]/20 transition-all hover:from-[#56C35D] hover:to-[#368F3C] hover:shadow-[0_16px_32px_rgba(63,168,69,0.52)] disabled:cursor-not-allowed disabled:bg-[#4CAF50]/40"
-            aria-label="Continue to signup"
+            aria-label="Continue to sign up"
           >
             <CircleArrowIcon className="h-6 w-6" />
           </button>
