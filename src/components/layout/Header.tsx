@@ -19,31 +19,31 @@ export function Header() {
   const totalItems = useCartStore((state) => state.getTotalItems())
 
   return (
-    <header className="sticky top-0 z-40 hidden border-b border-border bg-white md:flex">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4">
-        <NavLink to="/home" className="flex items-center gap-2 text-xl font-semibold tracking-[-0.03em] text-textPrimary">
-          <img src={logo} alt="Nectar logo" className="h-8 w-8" draggable={false} />
+    <header className="sticky top-0 z-40 border-b border-border bg-white">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6">
+        <NavLink to="/home" className="flex items-center gap-3 text-2xl font-semibold tracking-[-0.03em] text-textPrimary">
+          <img src={logo} alt="Nectar logo" className="h-10 w-10" draggable={false} />
           <span>nectar</span>
         </NavLink>
 
-        <nav className="flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-8">
           <NavLink to="/home" className={linkClassName}>
-            Shop
+            <span className="text-base">Shop</span>
           </NavLink>
           <NavLink to="/explore" className={linkClassName}>
-            Explore
+            <span className="text-base">Explore</span>
           </NavLink>
           <NavLink to="/favourites" className={linkClassName}>
-            Favourites
+            <span className="text-base">Favourites</span>
           </NavLink>
         </nav>
 
-        <div className="flex items-center gap-5 text-textPrimary">
-          <NavLink to="/cart" className="relative inline-flex items-center gap-2 text-sm font-medium text-textSecondary transition-colors hover:text-primary">
+        <div className="flex items-center gap-6 text-textPrimary">
+          <NavLink to="/cart" className="relative inline-flex items-center gap-2 text-lg font-medium text-textSecondary transition-colors hover:text-primary">
             <CartIcon />
             <Badge count={totalItems} />
           </NavLink>
-          <NavLink to="/account" className="inline-flex items-center gap-2 text-sm font-medium text-textSecondary transition-colors hover:text-primary">
+          <NavLink to="/account" className="inline-flex items-center gap-2 text-lg font-medium text-textSecondary transition-colors hover:text-primary">
             <PersonIcon />
           </NavLink>
         </div>

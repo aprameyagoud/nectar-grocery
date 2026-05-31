@@ -11,6 +11,7 @@ import { filterProducts } from '../../utils/productFilters'
 import { ProductCategory, type Product } from '../../types'
 
 import { BackArrowIcon, FilterIcon } from './mainIcons'
+import { useEffect, useState } from 'react'
 
 const categoryLookup: Record<string, ProductCategory> = {
   beverages: ProductCategory.BEVERAGES,
@@ -34,6 +35,27 @@ function CategorySkeleton() {
 export default function CategoryScreen() {
   const navigate = useNavigate()
   const goBack = useSmartBack('/explore')
+  const [isLarge, setIsLarge] = useState(() => typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches)
+
+  useEffect(() => {
+    const mql = window.matchMedia('(min-width: 1024px)')
+    const onChange = (e: MediaQueryListEvent) => setIsLarge(e.matches)
+    if (mql.addEventListener) {
+      mql.addEventListener('change', onChange)
+    } else {
+      // @ts-ignore
+      mql.addListener(onChange)
+    }
+
+    return () => {
+      if (mql.removeEventListener) {
+        mql.removeEventListener('change', onChange)
+      } else {
+        // @ts-ignore
+        mql.removeListener(onChange)
+      }
+    }
+  }, [])
   const { id = 'beverages' } = useParams<{ id: string }>()
   const routeCategory = categoryLookup[id] ?? ProductCategory.BEVERAGES
   const { data: fetchedCategories } = useSimulatedFetch(fetchCategories)
@@ -57,7 +79,8 @@ export default function CategoryScreen() {
   return (
     <div className="min-h-screen bg-background text-textPrimary">
       <div className="mx-auto flex w-full max-w-7xl gap-6 px-4 pb-8 pt-4 sm:px-6 lg:px-8">
-        <aside className="hidden w-72 shrink-0 rounded-[28px] border border-border bg-white p-5 shadow-sm lg:block self-start max-h-[80vh] overflow-auto lg:sticky lg:top-8">
+        {isLarge && (
+          <aside className="hidden w-72 shrink-0 rounded-[28px] border border-border bg-white p-5 shadow-sm lg:block self-start max-h-[80vh] overflow-auto lg:sticky lg:top-8">
           <h2 className="text-lg font-semibold text-textPrimary">Categories</h2>
           <div className="mt-4 space-y-2">
             {categories.map((category) => {
@@ -77,7 +100,8 @@ export default function CategoryScreen() {
               )
             })}
           </div>
-        </aside>
+          </aside>
+        )}
 
         <main className="min-w-0 flex-1">
           <div className="flex items-center justify-between px-1 py-2 lg:hidden">

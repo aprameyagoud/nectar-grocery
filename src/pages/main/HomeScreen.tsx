@@ -13,6 +13,7 @@ import {
   LocationPinIcon,
   SearchIcon,
 } from './mainIcons'
+import { useEffect, useState } from 'react'
 
 const groceryPills = [
   { label: 'Pulses', image: new URL('../../assets/pulses.png', import.meta.url).href, bg: '#F9E9D5' },
@@ -82,6 +83,28 @@ function CategoryPill({ label, image, bg, to }: { label: string; image: string; 
 
 export default function HomeScreen() {
   const navigate = useNavigate()
+  const [isLarge, setIsLarge] = useState(() => typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches)
+
+  useEffect(() => {
+    const mql = window.matchMedia('(min-width: 1024px)')
+    const onChange = (e: MediaQueryListEvent) => setIsLarge(e.matches)
+    // For older browsers that don't support addEventListener on MediaQueryList
+    if (mql.addEventListener) {
+      mql.addEventListener('change', onChange)
+    } else {
+      // @ts-ignore
+      mql.addListener(onChange)
+    }
+
+    return () => {
+      if (mql.removeEventListener) {
+        mql.removeEventListener('change', onChange)
+      } else {
+        // @ts-ignore
+        mql.removeListener(onChange)
+      }
+    }
+  }, [])
   const { data: fetchedCategories, loading: categoriesLoading } = useSimulatedFetch(fetchCategories)
   const { data: fetchedProducts, loading: productsLoading } = useSimulatedFetch(fetchProducts)
 
@@ -94,7 +117,7 @@ export default function HomeScreen() {
   return (
     <div className="min-h-screen bg-background text-textPrimary">
       <div className="mx-auto flex w-full max-w-7xl gap-6 px-4 pb-8 pt-4 sm:px-6 lg:px-8">
-        <CategorySidebar categories={categories} />
+          {isLarge && <CategorySidebar categories={categories} />}
 
         <main className="min-w-0 flex-1">
           <div className="mx-auto max-w-3xl lg:max-w-none">
