@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { Button } from '../../components/ui/Button'
+import FallbackImage from '../../components/ui/FallbackImage'
 import { useCartStore } from '../../store/cartStore'
 
 import { CheckoutModal } from '../checkout/CheckoutModal'
@@ -45,7 +46,7 @@ export default function CartScreen() {
             <section className="divide-y divide-border">
               {items.map((item) => (
                 <article key={item.product.id} className="relative flex items-center gap-4 py-8 pr-2 sm:gap-6">
-                  <img src={item.product.image} alt={item.product.name} className="h-20 w-20 object-contain" />
+                  <FallbackImage src={item.product.image} fallback={item.product.imageFallback} alt={item.product.name} className="h-20 w-20 object-contain" />
 
                   <div className="min-w-0 flex-1">
                     <h2 className="text-2xl font-semibold tracking-[-0.03em] text-textPrimary">{item.product.name}</h2>

@@ -5,6 +5,7 @@ import { useCartStore } from '../../store/cartStore'
 import { useFavoritesStore } from '../../store/favoritesStore'
 
 import { ChevronRightIcon } from './mainIcons'
+import FallbackImage from '../../components/ui/FallbackImage'
 
 export default function FavouritesScreen() {
   const navigate = useNavigate()
@@ -36,7 +37,7 @@ export default function FavouritesScreen() {
                 to={`/product/${product.id}`}
                 className="flex items-center gap-4 py-8 pr-2 transition-colors hover:bg-surface/40"
               >
-                <img src={product.image} alt={product.name} className="h-16 w-16 object-contain" />
+                <FallbackImage src={product.image} fallback={product.imageFallback} alt={product.name} className="h-16 w-16 object-contain" />
                 <div className="min-w-0 flex-1">
                   <h2 className="truncate text-2xl font-semibold tracking-[-0.03em] text-textPrimary">{product.name}</h2>
                   <p className="mt-2 text-lg text-textSecondary">{product.unit}, Price</p>

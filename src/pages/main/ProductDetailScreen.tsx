@@ -19,6 +19,7 @@ import {
   PlusIcon,
   ShareIcon,
 } from './mainIcons'
+import FallbackImage from '../../components/ui/FallbackImage'
 
 function ProductDetailSkeleton() {
   return (
@@ -72,7 +73,7 @@ export default function ProductDetailScreen() {
         <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:items-start">
           <div className="space-y-3">
             <div className="flex h-64 items-center justify-center rounded-[28px] bg-surface p-8">
-              <img src={product.image} alt={displayName} className="h-full w-full object-contain" />
+              <FallbackImage src={product.image} fallback={product.imageFallback} alt={displayName} className="h-full w-full object-contain" />
             </div>
             <div className="flex justify-center gap-2">
               <span className="h-2 w-6 rounded-full bg-primary" />

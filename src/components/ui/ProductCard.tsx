@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
 import type { Product } from '../../types'
+import FallbackImage from './FallbackImage'
 
 interface ProductCardProps {
   product: Product
@@ -23,7 +24,7 @@ export function ProductCard({ product }: ProductCardProps) {
       className="flex h-full cursor-pointer flex-col rounded-2xl border border-border bg-white p-4 shadow-sm transition-shadow duration-200 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
     >
       <div className="flex h-32 items-center justify-center overflow-hidden rounded-xl bg-surface">
-        <img src={product.image} alt={product.name} className="h-32 w-full object-contain p-3" />
+        <FallbackImage src={product.image} fallback={product.imageFallback} alt={product.name} className="h-32 w-full object-contain p-3" />
       </div>
 
       <div className="mt-4 flex flex-1 flex-col">

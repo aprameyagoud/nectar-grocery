@@ -5,6 +5,7 @@ export interface Product {
   price: number
   originalPrice?: number
   image: string
+  imageFallback?: string
   category: ProductCategory
   unit: string
   rating: number
@@ -42,6 +43,7 @@ export interface Category {
   id: string
   name: string
   image: string
+  imageFallback?: string
   bgColor: string
   borderColor: string
 }
