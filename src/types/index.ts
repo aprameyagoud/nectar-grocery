@@ -49,7 +49,7 @@ export interface Category {
 }
 
 export enum ProductCategory {
-  FRUITS_VEG = 'Fresh Fruits & Vegetable',
+  FRUITS_VEG = 'Fresh Fruits & Vegetables',
   COOKING_OIL = 'Cooking Oil & Ghee',
   MEAT_FISH = 'Meat & Fish',
   BAKERY_SNACKS = 'Bakery & Snacks',

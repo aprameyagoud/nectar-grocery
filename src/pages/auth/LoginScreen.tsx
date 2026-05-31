@@ -18,8 +18,8 @@ export default function LoginScreen() {
         </div>
 
         <div className="mt-24">
-          <h1 className="text-3xl font-semibold tracking-[-0.04em] text-textPrimary sm:text-[2.2rem]">Loging</h1>
-          <p className="mt-2 text-lg text-textSecondary">Enter your emails and password</p>
+          <h1 className="text-3xl font-semibold tracking-[-0.04em] text-textPrimary sm:text-[2.2rem]">Log in</h1>
+          <p className="mt-2 text-lg text-textSecondary">Enter your email and password</p>
 
           <div className="mt-10 space-y-6">
             <label className="block">
@@ -64,7 +64,7 @@ export default function LoginScreen() {
           <p className="mt-6 text-center text-base text-textPrimary">
             Don&apos;t have an account?{' '}
             <button type="button" onClick={() => navigate('/signup')} className="font-semibold text-primary transition-colors hover:text-primary-dark">
-              Singup
+              Sign up
             </button>
           </p>
         </div>

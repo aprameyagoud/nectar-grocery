@@ -19,7 +19,7 @@ const createLocalImage = (key: string) => {
 const categories: Category[] = [
   {
     id: 'fresh-fruits-vegetables',
-    name: 'Fresh Fruits & Vegetable',
+    name: 'Fresh Fruits & Vegetables',
     image: createLocalImage('fresh-fruits-vegetables'),
     imageFallback: createCategoryImage('fresh fruits vegetables basket'),
     bgColor: '#F2FBF2',

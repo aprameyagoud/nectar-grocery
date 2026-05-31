@@ -76,7 +76,7 @@ export default function SignUpScreen() {
           </p>
 
           <Button type="button" onClick={() => navigate('/location')} className="mt-8 text-lg">
-            Sing Up
+            Sign Up
           </Button>
 
           <p className="mt-6 text-center text-base text-textPrimary">
