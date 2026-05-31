@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 import { AppLayout } from './components/layout/AppLayout'
 import AccountScreen from './pages/AccountScreen'
@@ -23,7 +23,7 @@ import VerificationScreen from './pages/auth/VerificationScreen'
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<SplashScreen />} />
         <Route path="/onboarding" element={<OnboardingScreen />} />
@@ -47,7 +47,7 @@ function App() {
         <Route path="/order-failure" element={<OrderFailureScreen />} />
         <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
