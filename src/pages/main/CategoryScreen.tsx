@@ -57,7 +57,7 @@ export default function CategoryScreen() {
   return (
     <div className="min-h-screen bg-background text-textPrimary">
       <div className="mx-auto flex w-full max-w-7xl gap-6 px-4 pb-8 pt-4 sm:px-6 lg:px-8">
-        <aside className="hidden w-72 shrink-0 rounded-[28px] border border-border bg-white p-5 shadow-sm lg:block">
+        <aside className="hidden w-72 shrink-0 rounded-[28px] border border-border bg-white p-5 shadow-sm lg:block self-start max-h-[80vh] overflow-auto lg:sticky lg:top-8">
           <h2 className="text-lg font-semibold text-textPrimary">Categories</h2>
           <div className="mt-4 space-y-2">
             {categories.map((category) => {

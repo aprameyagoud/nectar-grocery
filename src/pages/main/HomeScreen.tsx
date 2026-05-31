@@ -37,7 +37,7 @@ function ProductCardSkeleton() {
 
 function CategorySidebar({ categories }: { categories: Category[] }) {
   return (
-    <aside className="hidden w-64 shrink-0 rounded-[28px] border border-border bg-white p-5 shadow-sm lg:block">
+    <aside className="hidden w-64 shrink-0 rounded-[28px] border border-border bg-white p-5 shadow-sm lg:block self-start max-h-[80vh] overflow-auto lg:sticky lg:top-8">
       <h2 className="text-lg font-semibold text-textPrimary">Categories</h2>
       <div className="mt-4 space-y-2">
         {categories.map((category) => (
