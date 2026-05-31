@@ -2,11 +2,12 @@ import type { ChangeEvent, KeyboardEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { AuthLayout } from '../../components/layout/AuthLayout'
-import heroImage from '../../assets/hero.png'
+import { Button } from '../../components/ui/Button'
+import signInImage from '../../assets/sign in.png'
 
 import { CarrotIcon, FacebookIcon, GlobeIcon, GoogleIcon } from './authIcons'
 
-const groceryHero = heroImage
+const groceryHero = signInImage
 
 export default function SignInScreen() {
   const navigate = useNavigate()
@@ -23,27 +24,26 @@ export default function SignInScreen() {
 
   return (
     <AuthLayout>
-      <div className="mx-auto flex min-h-screen w-full max-w-md flex-col px-6 py-8 sm:px-8">
-        <div className="pt-4 text-center">
-          <CarrotIcon className="mx-auto h-12 w-12 text-primary" />
-          <h1 className="mt-14 text-left text-4xl font-semibold tracking-[-0.04em] text-textPrimary">Get your groceries with nectar</h1>
-        </div>
-
-        <figure className="mt-8 overflow-hidden rounded-[28px] border border-border bg-[#FAF7F0] shadow-[0_18px_40px_rgba(17,24,39,0.08)]">
+      <div className="mx-auto flex min-h-screen w-full max-w-md flex-col px-6 pb-8 pt-0 sm:px-8 sm:py-8">
+        <figure className="order-1 -mx-6 overflow-hidden sm:order-2 sm:mx-0 sm:mt-4">
           <img
             src={groceryHero}
             alt="Fresh grocery produce arranged for delivery"
-            className="h-40 w-full object-cover object-center"
+            className="h-[22rem] w-full object-cover object-[center_18%] sm:h-[24rem]"
           />
-          <figcaption className="px-5 py-4 text-sm font-medium text-textSecondary">
-            Fresh produce ready to deliver
-          </figcaption>
         </figure>
 
-        <div className="mt-10 space-y-2 border-b border-border pb-3">
+        <div className="order-2 pt-8 text-center sm:order-1 sm:pt-2">
+          <CarrotIcon className="mx-auto h-12 w-12 text-primary" />
+          <h1 className="mx-auto mt-10 max-w-[16rem] text-left text-[2.1rem] font-semibold leading-tight tracking-[-0.04em] text-textPrimary sm:text-4xl">
+            Get your groceries with nectar
+          </h1>
+        </div>
+
+        <div className="order-3 mt-8 space-y-2 border-b border-border pb-3">
           <div className="flex items-center gap-3 text-textPrimary">
             <GlobeIcon className="h-5 w-5 text-textSecondary" />
-            <span className="text-base font-medium">+880</span>
+            <span className="text-base font-medium">+91</span>
             <input
               type="tel"
               value=""
@@ -55,17 +55,13 @@ export default function SignInScreen() {
           </div>
         </div>
 
-        <button
-          type="button"
-          onClick={() => navigate('/number')}
-          className="mt-8 w-full rounded-full bg-primary py-4 text-base font-semibold text-white shadow-[0_12px_24px_rgba(76,175,80,0.25)] transition-colors hover:bg-primary-dark"
-        >
+        <Button type="button" onClick={() => navigate('/number')} className="order-4 mt-8 text-base">
           Continue with phone number
-        </button>
+        </Button>
 
-        <div className="mt-10 text-center text-sm font-medium text-textSecondary">Or connect with social media</div>
+        <div className="order-5 mt-10 text-center text-sm font-medium text-textSecondary">Or connect with social media</div>
 
-        <div className="mt-8 space-y-4">
+        <div className="order-6 mt-8 space-y-4">
           <button
             type="button"
             onClick={() => navigate('/login')}

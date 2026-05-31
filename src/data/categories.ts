@@ -1,7 +1,20 @@
 import type { Category } from '../types'
 
 const createCategoryImage = (query: string) => `https://loremflickr.com/300/300/${encodeURIComponent(query)}`
-const createLocalImage = (filename: string) => `/assets/categories/${filename}.png`
+
+const categoryImageMap: Record<string, string> = {
+  'fresh-fruits-vegetables': 'fresh fruits and vegatables.png',
+  'cooking-oil-ghee': 'cooking oil.png',
+  'meat-fish': 'meat and fish.png',
+  'bakery-snacks': 'bakery and snck.png',
+  'dairy-eggs': 'dairy.png',
+  beverages: 'beverages.png',
+}
+
+const createLocalImage = (key: string) => {
+  const filename = categoryImageMap[key]
+  return filename ? new URL(`../assets/${filename}`, import.meta.url).href : createCategoryImage(key)
+}
 
 const categories: Category[] = [
   {
@@ -15,7 +28,7 @@ const categories: Category[] = [
   {
     id: 'cooking-oil-ghee',
     name: 'Cooking Oil & Ghee',
-    image: createLocalImage('olive-oil-bottle'),
+    image: createLocalImage('cooking-oil-ghee'),
     imageFallback: createCategoryImage('olive oil bottle'),
     bgColor: '#FFF8EE',
     borderColor: '#FFE0A3',

@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { Button } from '../../components/ui/Button'
 import { StarRating } from '../../components/ui/StarRating'
@@ -37,6 +37,7 @@ function ProductDetailSkeleton() {
 }
 
 export default function ProductDetailScreen() {
+  const navigate = useNavigate()
   const goBack = useSmartBack('/home')
   const { id = '' } = useParams<{ id: string }>()
   const { data: fetchedProducts, loading } = useSimulatedFetch(fetchProducts)
@@ -48,15 +49,15 @@ export default function ProductDetailScreen() {
   const [showDetails, setShowDetails] = useState(true)
 
   const product: Product | undefined = useMemo(
-    () => products.find((item) => item.id === id) ?? products[1],
+    () => products.find((item) => item.id === id) ?? products.find((item) => item.id === 'red-apple') ?? products[0],
     [id, products],
   )
-
-  const displayName = product.id === 'red-apple' ? 'Naturel Red Apple' : product.name
 
   if (loading || !product) {
     return <ProductDetailSkeleton />
   }
+
+  const displayName = product.name
 
   return (
     <div className="min-h-screen bg-background text-textPrimary">
@@ -141,10 +142,12 @@ export default function ProductDetailScreen() {
 
             <div className="hidden pt-6 lg:block">
               <Button
-                onClick={() => addToCart(product)}
-                className="rounded-full bg-primary py-4 text-lg font-semibold text-white shadow-[0_12px_24px_rgba(76,175,80,0.25)] hover:bg-primary-dark"
+                onClick={() => {
+                  addToCart(product)
+                  navigate('/cart')
+                }}
               >
-                Add To Basket
+                Add to Cart
               </Button>
             </div>
           </div>
@@ -153,10 +156,12 @@ export default function ProductDetailScreen() {
 
       <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-white px-4 py-4 lg:hidden">
         <Button
-          onClick={() => addToCart(product)}
-          className="rounded-full bg-primary py-4 text-lg font-semibold text-white shadow-[0_12px_24px_rgba(76,175,80,0.25)] hover:bg-primary-dark"
+          onClick={() => {
+            addToCart(product)
+            navigate('/cart')
+          }}
         >
-          Add To Basket
+          Add to Cart
         </Button>
       </div>
     </div>

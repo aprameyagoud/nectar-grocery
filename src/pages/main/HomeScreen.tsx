@@ -6,19 +6,19 @@ import { fetchCategories } from '../../data/categories'
 import { fetchProducts } from '../../data/products'
 import { useSimulatedFetch } from '../../hooks/useSimulatedFetch'
 import type { Category, Product } from '../../types'
-import heroImage from '../../assets/hero.png'
+import bannerMain from '../../assets/home screen banner.png'
+import logo from '../../assets/logo.png'
 
 import {
-  CarrotSmallIcon,
   LocationPinIcon,
   SearchIcon,
 } from './mainIcons'
 
 const groceryPills = [
-  { label: 'Pulses', image: 'https://loremflickr.com/160/90/lentils', bg: '#F9E9D5' },
-  { label: 'Rice', image: 'https://loremflickr.com/160/90/rice', bg: '#E4F1E9' },
-  { label: 'Flour', image: 'https://loremflickr.com/160/90/flour', bg: '#F1E6FB' },
-  { label: 'Oil', image: 'https://loremflickr.com/160/90/olive-oil', bg: '#FFF0E2' },
+  { label: 'Pulses', image: new URL('../../assets/pulses.png', import.meta.url).href, bg: '#F9E9D5' },
+  { label: 'Rice', image: new URL('../../assets/rice.png', import.meta.url).href, bg: '#E4F1E9' },
+  { label: 'Flour', image: new URL('../../assets/bakery and snck.png', import.meta.url).href, bg: '#F1E6FB' },
+  { label: 'Oil', image: new URL('../../assets/cooking oil.png', import.meta.url).href, bg: '#FFF0E2' },
 ]
 
 function ProductCardSkeleton() {
@@ -67,16 +67,16 @@ function HorizontalProductRail({ items }: { items: Product[] }) {
   )
 }
 
-function CategoryPill({ label, image, bg }: { label: string; image: string; bg: string }) {
+function CategoryPill({ label, image, bg, to }: { label: string; image: string; bg: string; to: string }) {
   return (
-    <button
-      type="button"
+    <Link
+      to={to}
       className="flex min-w-[160px] items-center gap-3 rounded-[22px] px-4 py-4 text-left shadow-sm md:min-w-0"
       style={{ backgroundColor: bg }}
     >
       <img src={image} alt={label} className="h-16 w-16 rounded-2xl object-cover" />
       <span className="text-lg font-medium text-textPrimary">{label}</span>
-    </button>
+    </Link>
   )
 }
 
@@ -99,10 +99,10 @@ export default function HomeScreen() {
         <main className="min-w-0 flex-1">
           <div className="mx-auto max-w-3xl lg:max-w-none">
             <div className="flex flex-col items-center gap-4 text-center lg:items-start lg:text-left">
-              <CarrotSmallIcon className="h-10 w-10 text-primary" />
+              <img src={logo} alt="Nectar logo" className="h-10 w-10" draggable={false} />
               <div className="flex items-center gap-2 text-lg font-medium text-textSecondary">
                 <LocationPinIcon className="h-5 w-5" />
-                <span>Dhaka, Banassre</span>
+                <span>Panaji, Goa</span>
               </div>
             </div>
 
@@ -115,23 +115,13 @@ export default function HomeScreen() {
               <span>Search Store</span>
             </button>
 
-            <section className="mt-6 overflow-hidden rounded-2xl bg-[linear-gradient(135deg,#F4FFE9_0%,#D7F0C8_35%,#A8E08E_100%)] p-5 shadow-sm md:min-h-[220px] md:p-8">
-              <div className="flex items-center justify-between gap-4">
-                <div className="max-w-[55%] space-y-2 md:max-w-md">
-                  <p className="text-2xl font-semibold tracking-[-0.04em] text-textPrimary md:text-4xl">Fresh Vegetables</p>
-                  <p className="text-sm font-medium text-primary-dark md:text-lg">Get Up To 40% OFF</p>
-                </div>
-                <img
-                  src={heroImage}
-                  alt="Fresh vegetables and produce"
-                  className="h-28 w-28 rounded-2xl object-cover md:h-40 md:w-40"
-                />
-              </div>
-              <div className="mt-6 flex justify-center gap-2">
-                <span className="h-2 w-6 rounded-full bg-primary" />
-                <span className="h-2 w-2 rounded-full bg-black/20" />
-                <span className="h-2 w-2 rounded-full bg-black/20" />
-              </div>
+            <section className="relative mx-auto mt-6 overflow-hidden rounded-[28px] border border-[#F2F3F2] bg-white shadow-[0_18px_50px_rgba(84,131,50,0.16)] aspect-[760/220] min-h-[180px] md:min-h-[220px]">
+              <img
+                src={bannerMain}
+                alt="Fresh vegetables and produce"
+                className="absolute inset-0 h-full w-full object-cover object-center"
+                draggable={false}
+              />
             </section>
 
             {productsLoading ? (
@@ -191,7 +181,7 @@ export default function HomeScreen() {
                   </div>
                   <div className="mt-4 flex gap-4 overflow-x-auto pb-2 lg:grid lg:grid-cols-4 lg:overflow-visible">
                     {groceryPills.map((pill) => (
-                      <CategoryPill key={pill.label} {...pill} />
+                      <CategoryPill key={pill.label} {...pill} to="/explore" />
                     ))}
                   </div>
                 </section>

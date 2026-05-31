@@ -1,11 +1,9 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { Button } from '../../components/ui/Button'
 import FallbackImage from '../../components/ui/FallbackImage'
 import { useCartStore } from '../../store/cartStore'
-
-import { CheckoutModal } from '../checkout/CheckoutModal'
 import { CloseIcon, MinusIcon, PlusIcon } from './mainIcons'
 
 function EmptyCartState() {
@@ -16,7 +14,7 @@ function EmptyCartState() {
       <div className="text-8xl">🛒</div>
       <p className="mt-6 text-3xl font-semibold tracking-[-0.03em] text-textPrimary">Your cart is empty</p>
       <div className="mt-8 w-full max-w-sm">
-        <Button onClick={() => navigate('/home')} className="rounded-full bg-primary py-4 text-lg font-semibold text-white hover:bg-primary-dark">
+        <Button onClick={() => navigate('/home')}>
           Start Shopping
         </Button>
       </div>
@@ -25,11 +23,11 @@ function EmptyCartState() {
 }
 
 export default function CartScreen() {
+  const navigate = useNavigate()
   const items = useCartStore((state) => state.items)
   const removeFromCart = useCartStore((state) => state.removeFromCart)
   const updateQuantity = useCartStore((state) => state.updateQuantity)
   const getTotal = useCartStore((state) => state.getTotal)
-  const [showCheckout, setShowCheckout] = useState(false)
 
   const total = useMemo(() => getTotal(), [getTotal, items])
 
@@ -67,7 +65,7 @@ export default function CartScreen() {
                       <button
                         type="button"
                         onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                        className="flex h-14 w-14 items-center justify-center rounded-full border border-primary text-primary transition-colors hover:bg-primary hover:text-white"
+                        className="flex h-14 w-14 items-center justify-center rounded-full border border-[#3FA845] bg-gradient-to-b from-[#5FCC66] to-[#3FA845] text-white shadow-[0_10px_20px_rgba(63,168,69,0.28)] ring-1 ring-[#2E7D32]/15 transition-all hover:from-[#56C35D] hover:to-[#368F3C] hover:shadow-[0_12px_22px_rgba(63,168,69,0.36)]"
                         aria-label={`Increase ${item.product.name}`}
                       >
                         <PlusIcon className="h-7 w-7" />
@@ -107,7 +105,7 @@ export default function CartScreen() {
                   </div>
                 </div>
                 <div className="mt-6">
-                  <Button onClick={() => setShowCheckout(true)} className="rounded-full bg-primary py-4 text-lg font-semibold text-white hover:bg-primary-dark">
+                  <Button onClick={() => navigate('/checkout')}>
                     Go to Checkout
                   </Button>
                 </div>
@@ -119,7 +117,7 @@ export default function CartScreen() {
 
       {items.length > 0 ? (
         <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-white px-4 py-4 lg:hidden">
-          <Button onClick={() => setShowCheckout(true)} className="relative rounded-full bg-primary py-4 text-lg font-semibold text-white hover:bg-primary-dark">
+          <Button onClick={() => navigate('/checkout')} className="relative">
             <span>Go to Checkout</span>
             <span className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/15 px-3 py-1 text-sm font-semibold text-white">
               ${total.toFixed(2)}
@@ -127,8 +125,6 @@ export default function CartScreen() {
           </Button>
         </div>
       ) : null}
-
-      {showCheckout ? <CheckoutModal onClose={() => setShowCheckout(false)} /> : null}
     </div>
   )
 }

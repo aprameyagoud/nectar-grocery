@@ -12,6 +12,7 @@ import LocationScreen from './pages/auth/LocationScreen'
 import LoginScreen from './pages/auth/LoginScreen'
 import NumberScreen from './pages/auth/NumberScreen'
 import OnboardingScreen from './pages/auth/OnboardingScreen'
+import CheckoutScreen from './pages/checkout/CheckoutScreen'
 import OrderFailureScreen from './pages/OrderFailureScreen'
 import OrderSuccessScreen from './pages/checkout/OrderSuccessScreen'
 import ProductDetailScreen from './pages/main/ProductDetailScreen'
@@ -40,6 +41,7 @@ function App() {
         <Route path="/product/:id" element={<AppLayout><ProductDetailScreen /></AppLayout>} />
         <Route path="/search" element={<AppLayout><SearchScreen /></AppLayout>} />
         <Route path="/cart" element={<AppLayout><CartScreen /></AppLayout>} />
+        <Route path="/checkout" element={<CheckoutScreen />} />
         <Route path="/favourites" element={<AppLayout><FavouritesScreen /></AppLayout>} />
         <Route path="/account" element={<AppLayout><AccountScreen /></AppLayout>} />
         <Route path="/filters" element={<FilterScreen />} />

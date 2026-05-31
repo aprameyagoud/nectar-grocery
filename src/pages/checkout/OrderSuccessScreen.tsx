@@ -24,8 +24,19 @@ export default function OrderSuccessScreen() {
       <div className="absolute right-[28%] top-[16%] h-14 w-1 rounded-full bg-[#FF6D4D] -rotate-[20deg]" />
 
       <div className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center text-center">
-        <div className="relative flex h-32 w-32 items-center justify-center rounded-full bg-primary shadow-[0_0_0_6px_rgba(76,175,80,0.25)]">
-          <span className="text-7xl font-bold leading-none text-white">✓</span>
+        <div className="relative flex h-32 w-32 items-center justify-center rounded-full bg-[#388E3C] shadow-[0_0_0_6px_rgba(56,142,60,0.25)]">
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            className="h-16 w-16 text-[#EAF7EA] drop-shadow-[0_2px_2px_rgba(0,0,0,0.12)]"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3.75"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
         </div>
 
         <h1 className="mt-12 text-4xl font-semibold tracking-[-0.04em] text-textPrimary sm:text-5xl">
@@ -38,7 +49,6 @@ export default function OrderSuccessScreen() {
         <div className="mt-24 w-full space-y-4">
           <Button
             onClick={() => navigate('/home')}
-            className="rounded-full bg-primary py-4 text-lg font-semibold text-white shadow-[0_12px_24px_rgba(76,175,80,0.25)] hover:bg-primary-dark"
           >
             Track Order
           </Button>

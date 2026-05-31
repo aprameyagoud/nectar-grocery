@@ -1,16 +1,11 @@
+import logo from '../../assets/logo.png'
+
 interface IconProps {
   className?: string
 }
 
 export function CarrotIcon({ className = 'h-12 w-12' }: IconProps) {
-  return (
-    <svg viewBox="0 0 64 64" className={className} fill="none" aria-hidden="true">
-      <path
-        d="M30 10c3 0 5 2 5 5 0 2-1 4-3 5l-4 2 7 4-2 4-6-3-3 7c-4 10-10 18-17 22l-3-3c4-9 11-17 20-21l7-3-4-6 4-2c2-1 3-3 3-5 0-3 2-5 5-5s5 2 5 5c0 2-1 4-3 5l-3 2 3 4-4 3-3-4-4 2 4 6-4 2-5-8-6 3 4 5c-5 3-10 7-15 13 4-2 8-7 11-12l8-13 6 3 4-2-5-8 4-2c2-1 3-3 3-5 0-3 2-5 5-5s5 2 5 5c0 2-1 4-3 5l-4 2 4 6-4 3-4-6-5 2 5 7-4 2-5-8-6 3 4 5c-2 2-4 5-5 8-2 4-5 8-9 11l-3-3c3-4 6-7 8-12l6-12-6-3 4-8 6 3 3-6c1-1 1-2 1-3 0-3 2-5 5-5Z"
-        fill="currentColor"
-      />
-    </svg>
-  )
+  return <img src={logo} alt="Nectar logo" className={className} aria-hidden="true" draggable={false} />
 }
 
 export function BackArrowIcon({ className = 'h-7 w-7' }: IconProps) {

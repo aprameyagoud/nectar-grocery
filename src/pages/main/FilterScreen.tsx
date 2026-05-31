@@ -1,4 +1,5 @@
 import { useSmartBack } from '../../hooks/useSmartBack'
+import { Button } from '../../components/ui/Button'
 import { useFilterStore } from '../../store/filterStore'
 
 import { CheckIcon, CloseIcon } from './mainIcons'
@@ -35,7 +36,7 @@ function FilterSection({
             >
               <span
                 className={`flex h-12 w-12 items-center justify-center rounded-[14px] border text-xl ${
-                  isSelected ? 'border-primary bg-primary text-white' : 'border-[#B9B9B9] bg-white text-transparent'
+                  isSelected ? 'border-[#3FA845] bg-gradient-to-b from-[#5FCC66] to-[#3FA845] text-white shadow-[0_8px_16px_rgba(63,168,69,0.24)]' : 'border-[#B9B9B9] bg-white text-transparent'
                 }`}
               >
                 <CheckIcon className="h-6 w-6" />
@@ -82,13 +83,9 @@ export default function FilterScreen() {
           />
         </div>
 
-        <button
-          type="button"
-          onClick={goBack}
-          className="mt-auto w-full rounded-full bg-primary py-4 text-lg font-semibold text-white shadow-[0_12px_24px_rgba(76,175,80,0.25)] transition-colors hover:bg-primary-dark"
-        >
+        <Button type="button" onClick={goBack} className="mt-auto text-lg">
           Apply Filter
-        </button>
+        </Button>
       </div>
     </div>
   )

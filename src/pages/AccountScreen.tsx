@@ -11,7 +11,7 @@ export default function AccountScreen() {
 
   const displayName = user?.name ?? 'Guest User'
   const displayEmail = user?.email ?? 'No email connected'
-  const displayPhone = user?.phone ?? '+880'
+  const displayPhone = user?.phone ?? '+91'
 
   return (
     <div className="min-h-screen bg-background px-4 pb-8 pt-4 text-textPrimary sm:px-6 lg:px-8">
@@ -44,7 +44,6 @@ export default function AccountScreen() {
             logout()
             navigate('/signin')
           }}
-          className="rounded-full bg-primary py-4 text-lg font-semibold text-white shadow-[0_12px_24px_rgba(76,175,80,0.25)] hover:bg-primary-dark"
         >
           Log out
         </Button>

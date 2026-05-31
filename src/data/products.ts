@@ -1,7 +1,39 @@
 import { ProductCategory, type Product } from '../types'
 
 const createImageUrl = (query: string) => `https://loremflickr.com/300/300/${encodeURIComponent(query)}`
-const createLocalImage = (filename: string) => `/assets/products/${filename}.png`
+
+const productImageMap: Record<string, string> = {
+  'organic-bananas': 'banana.png',
+  'red-apple': 'red apple.png',
+  'bell-pepper-red': 'capsicum.png',
+  'egg-chicken-red': 'egg chicken red.png',
+  'egg-chicken-white': 'egg chicken white.png',
+  ginger: 'ginger.png',
+  'broiler-chicken': 'broiler chicken.png',
+  'beef-bone': 'beef bone.png',
+  'diet-coke': 'diet coke.png',
+  'sprite-can': 'sprite.png',
+  'coca-cola-can': 'cococola.png',
+  'pepsi-can': 'pepsi.png',
+  'apple-grape-juice': 'apple and grape juice.png',
+  'orange-juice': 'orange juice.png',
+  'egg-pasta': 'egg pasta.png',
+  'egg-noodles': 'egg noodles.png',
+  'mayonnais-eggless': 'mayo eggless.png',
+  'almond-milk': 'dairy.png',
+  'greek-yogurt': 'dairy.png',
+  'whole-wheat-bread': 'bakery and snck.png',
+  'cheese-crackers': 'bakery and snck.png',
+  'sunflower-cooking-oil': 'cooking oil.png',
+  'olive-oil': 'cooking oil.png',
+  'potato-chips-sea-salt': 'pngfuel 11.png',
+  'tortilla-chips': 'pngfuel 11.png',
+}
+
+const createLocalImage = (key: string) => {
+  const filename = productImageMap[key]
+  return filename ? new URL(`../assets/${filename}`, import.meta.url).href : createImageUrl(key)
+}
 
 export const products: Product[] = [
   {

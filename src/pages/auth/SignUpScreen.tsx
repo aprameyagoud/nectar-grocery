@@ -2,12 +2,11 @@ import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { AuthLayout } from '../../components/layout/AuthLayout'
-import heroImage from '../../assets/hero.png'
+import { Button } from '../../components/ui/Button'
 
 import { CarrotIcon, CheckIcon, EyeIcon, EyeOffIcon } from './authIcons'
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-const groceryHero = heroImage
 
 export default function SignUpScreen() {
   const navigate = useNavigate()
@@ -18,23 +17,12 @@ export default function SignUpScreen() {
 
   return (
     <AuthLayout>
-      <div className="mx-auto flex min-h-screen w-full max-w-md flex-col px-6 py-8 sm:px-8">
-        <div className="pt-8 text-center">
+      <div className="mx-auto flex min-h-screen w-full max-w-md flex-col px-6 pb-8 pt-8 sm:max-w-lg sm:px-8 sm:pt-10 lg:max-w-xl">
+        <div className="pt-6 text-center">
           <CarrotIcon className="mx-auto h-12 w-12 text-primary" />
         </div>
 
-        <figure className="mt-8 overflow-hidden rounded-[28px] border border-border bg-[#FAF7F0] shadow-[0_18px_40px_rgba(17,24,39,0.08)]">
-          <img
-            src={groceryHero}
-            alt="Fresh groceries packed for home delivery"
-            className="h-40 w-full object-cover object-center"
-          />
-          <figcaption className="px-5 py-4 text-sm font-medium text-textSecondary">
-            Build your account to start ordering
-          </figcaption>
-        </figure>
-
-        <div className="mt-10">
+        <div className="mt-8 sm:mt-10">
           <h1 className="text-3xl font-semibold tracking-[-0.04em] text-textPrimary sm:text-[2.2rem]">Sign Up</h1>
           <p className="mt-2 text-lg text-textSecondary">Enter your credentials to continue</p>
 
@@ -87,13 +75,9 @@ export default function SignUpScreen() {
             <span className="text-primary"> Privacy Policy.</span>
           </p>
 
-          <button
-            type="button"
-            onClick={() => navigate('/location')}
-            className="mt-8 w-full rounded-full bg-primary py-4 text-lg font-semibold text-white shadow-[0_12px_24px_rgba(76,175,80,0.25)] transition-colors hover:bg-primary-dark"
-          >
+          <Button type="button" onClick={() => navigate('/location')} className="mt-8 text-lg">
             Sing Up
-          </button>
+          </Button>
 
           <p className="mt-6 text-center text-base text-textPrimary">
             Already have an account?{' '}

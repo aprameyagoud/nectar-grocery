@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { AuthLayout } from '../../components/layout/AuthLayout'
+import { Button } from '../../components/ui/Button'
 
 import { CarrotIcon, EyeIcon, EyeOffIcon } from './authIcons'
 
@@ -56,13 +57,9 @@ export default function LoginScreen() {
             </button>
           </div>
 
-          <button
-            type="button"
-            onClick={() => navigate('/home')}
-            className="mt-8 w-full rounded-full bg-primary py-4 text-lg font-semibold text-white shadow-[0_12px_24px_rgba(76,175,80,0.25)] transition-colors hover:bg-primary-dark"
-          >
+          <Button type="button" onClick={() => navigate('/home')} className="mt-8">
             Log In
-          </button>
+          </Button>
 
           <p className="mt-6 text-center text-base text-textPrimary">
             Don&apos;t have an account?{' '}

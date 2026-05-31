@@ -24,7 +24,7 @@ export default function FavouritesScreen() {
             <p className="text-7xl">♡</p>
             <p className="mt-6 text-2xl font-semibold tracking-[-0.03em]">No favourites yet</p>
             <div className="mt-8 w-full max-w-sm">
-              <Button onClick={() => navigate('/explore')} className="rounded-full bg-primary py-4 text-lg font-semibold text-white hover:bg-primary-dark">
+              <Button onClick={() => navigate('/explore')}>
                 Explore Products
               </Button>
             </div>
@@ -59,7 +59,6 @@ export default function FavouritesScreen() {
                 addAllToCart()
                 navigate('/cart')
               }}
-              className="rounded-full bg-primary py-4 text-lg font-semibold text-white shadow-[0_12px_24px_rgba(76,175,80,0.25)] hover:bg-primary-dark"
             >
               Add All To Cart
             </Button>

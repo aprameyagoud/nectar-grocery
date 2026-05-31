@@ -19,7 +19,7 @@ export function QuantitySelector({ quantity, onDecrease, onIncrease }: QuantityS
       <button
         type="button"
         onClick={onIncrease}
-        className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-lg font-semibold text-white transition-colors hover:bg-primary-dark"
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-b from-[#5FCC66] to-[#3FA845] text-lg font-semibold text-white shadow-[0_8px_16px_rgba(63,168,69,0.24)] ring-1 ring-[#2E7D32]/15 transition-all hover:from-[#56C35D] hover:to-[#368F3C] hover:shadow-[0_10px_18px_rgba(63,168,69,0.32)]"
         aria-label="Increase quantity"
       >
         +

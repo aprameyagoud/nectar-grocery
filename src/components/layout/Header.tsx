@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import logo from '../../assets/logo.png'
 
 import { Badge } from '../ui/Badge'
 import { useCartStore } from '../../store/cartStore'
@@ -21,7 +22,7 @@ export function Header() {
     <header className="sticky top-0 z-40 hidden border-b border-border bg-white md:flex">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4">
         <NavLink to="/home" className="flex items-center gap-2 text-xl font-semibold tracking-[-0.03em] text-textPrimary">
-          <span role="img" aria-label="carrot">🥕</span>
+          <img src={logo} alt="Nectar logo" className="h-8 w-8" draggable={false} />
           <span>nectar</span>
         </NavLink>
 

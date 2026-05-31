@@ -6,18 +6,22 @@ interface FallbackImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 
 export function FallbackImage({ src, fallback, alt, ...rest }: FallbackImageProps) {
   const [currentSrc, setCurrentSrc] = useState<string | undefined>(src as string | undefined)
+  const resolvedSrc = currentSrc && currentSrc.length > 0 ? currentSrc : fallback
+
+  if (!resolvedSrc) {
+    return null
+  }
 
   return (
     // eslint-disable-next-line jsx-a11y/alt-text
     <img
-      src={currentSrc}
+      src={resolvedSrc}
       alt={alt}
       {...rest}
       onError={(e) => {
         if (fallback && currentSrc !== fallback) {
           setCurrentSrc(fallback)
         } else {
-          // clear src to avoid infinite error loop
           setCurrentSrc(undefined)
         }
         if (rest.onError) rest.onError(e as any)

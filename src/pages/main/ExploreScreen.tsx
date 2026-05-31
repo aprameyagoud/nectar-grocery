@@ -1,21 +1,23 @@
 import { Link, useNavigate } from 'react-router-dom'
 
+import logo from '../../assets/logo.png'
 import { Skeleton } from '../../components/ui/Skeleton'
 import { fetchCategories } from '../../data/categories'
 import { useSimulatedFetch } from '../../hooks/useSimulatedFetch'
 
-import { CarrotSmallIcon, SearchIcon } from './mainIcons'
+import { SearchIcon } from './mainIcons'
 
 export default function ExploreScreen() {
   const navigate = useNavigate()
   const { data: fetchedCategories, loading } = useSimulatedFetch(fetchCategories)
   const categories = fetchedCategories ?? []
+  const getCategoryPath = (categoryId: string) => `/category/${categoryId}`
 
   return (
     <div className="min-h-screen bg-background px-4 pb-8 pt-4 text-textPrimary sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="flex justify-center">
-          <CarrotSmallIcon className="h-10 w-10 text-primary" />
+          <img src={logo} alt="Nectar logo" className="h-10 w-10" draggable={false} />
         </div>
 
         <h1 className="mt-6 text-center text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">Find Products</h1>
@@ -40,13 +42,14 @@ export default function ExploreScreen() {
             {categories.map((category) => (
               <Link
                 key={category.id}
-                to={`/category/${category.id}`}
+                to={getCategoryPath(category.id)}
                 className="flex min-h-[220px] flex-col items-center justify-between rounded-2xl border p-5 text-center transition-transform hover:-translate-y-0.5"
+                aria-label={`Open ${category.name}`}
                 style={{ backgroundColor: category.bgColor, borderColor: category.borderColor }}
               >
                 <img src={category.image} alt={category.name} className="h-32 w-full object-contain" />
                 <p className="mt-4 text-lg font-semibold tracking-[-0.02em] text-textPrimary">
-                  {category.id === 'fresh-fruits-vegetables' ? 'Frash Fruits & Vegetable' : category.name}
+                  {category.id === 'fresh-fruits-vegetables' ? 'Fresh Fruits & Vegetables' : category.name}
                 </p>
               </Link>
             ))}

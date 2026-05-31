@@ -28,11 +28,9 @@ export default function SearchScreen() {
   const inputRef = useRef<HTMLInputElement | null>(null)
   const { data: fetchedProducts, loading } = useSimulatedFetch(fetchProducts)
   const products = fetchedProducts ?? []
-  const filters = useFilterStore((state) => ({
-    selectedCategories: state.selectedCategories,
-    selectedBrands: state.selectedBrands,
-    sortBy: state.sortBy,
-  }))
+  const selectedCategories = useFilterStore((state) => state.selectedCategories)
+  const selectedBrands = useFilterStore((state) => state.selectedBrands)
+  const sortBy = useFilterStore((state) => state.sortBy)
 
   useEffect(() => {
     inputRef.current?.focus()
@@ -42,11 +40,11 @@ export default function SearchScreen() {
     () =>
       filterProducts(products, {
         query: debouncedQuery,
-        selectedCategories: filters.selectedCategories,
-        selectedBrands: filters.selectedBrands,
-        sortBy: filters.sortBy,
+        selectedCategories,
+        selectedBrands,
+        sortBy,
       }),
-    [debouncedQuery, filters.selectedBrands, filters.selectedCategories, filters.sortBy, products],
+    [debouncedQuery, products, selectedBrands, selectedCategories, sortBy],
   )
 
   return (

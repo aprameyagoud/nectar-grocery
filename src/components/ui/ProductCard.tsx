@@ -1,5 +1,6 @@
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
+import { useCartStore } from '../../store/cartStore'
 import type { Product } from '../../types'
 import FallbackImage from './FallbackImage'
 
@@ -8,19 +9,11 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  const navigate = useNavigate()
+  const addToCart = useCartStore((state) => state.addToCart)
 
   return (
-    <article
-      role="button"
-      tabIndex={0}
-      onClick={() => navigate(`/product/${product.id}`)}
-      onKeyDown={(event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault()
-          navigate(`/product/${product.id}`)
-        }
-      }}
+    <Link
+      to={`/product/${product.id}`}
       className="flex h-full cursor-pointer flex-col rounded-2xl border border-border bg-white p-4 shadow-sm transition-shadow duration-200 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
     >
       <div className="flex h-32 items-center justify-center overflow-hidden rounded-xl bg-surface">
@@ -41,14 +34,18 @@ export function ProductCard({ product }: ProductCardProps) {
 
           <button
             type="button"
-            aria-label={`Add ${product.name}`}
-            onClick={(event) => event.stopPropagation()}
-            className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary p-2 text-white transition-colors hover:bg-primary-dark"
+            aria-label={`Add ${product.name} to cart`}
+            onClick={(event) => {
+              event.preventDefault()
+              event.stopPropagation()
+              addToCart(product)
+            }}
+            className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-b from-[#5FCC66] to-[#3FA845] p-2 text-white shadow-[0_10px_18px_rgba(63,168,69,0.28)] ring-1 ring-[#2E7D32]/15 transition-all hover:from-[#56C35D] hover:to-[#368F3C] hover:shadow-[0_12px_22px_rgba(63,168,69,0.36)]"
           >
             +
           </button>
         </div>
       </div>
-    </article>
+    </Link>
   )
 }

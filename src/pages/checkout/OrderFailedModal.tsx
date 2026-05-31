@@ -38,7 +38,6 @@ export function OrderFailedModal({
         <div className="mt-10">
           <Button
             onClick={onTryAgain}
-            className="rounded-full bg-primary py-4 text-lg font-semibold text-white shadow-[0_12px_24px_rgba(76,175,80,0.25)] hover:bg-primary-dark"
           >
             Please Try Again
           </Button>

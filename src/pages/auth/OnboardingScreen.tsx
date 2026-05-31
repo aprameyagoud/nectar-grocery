@@ -1,19 +1,23 @@
 import { useNavigate } from 'react-router-dom'
 
-import heroImage from '../../assets/hero.png'
+import onboardingImage from '../../assets/onboarding.png'
+import { Button } from '../../components/ui/Button'
 
 import { CarrotIcon } from './authIcons'
-
-const onboardingImage = heroImage
 
 export default function OnboardingScreen() {
   const navigate = useNavigate()
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-white">
-      <img src={onboardingImage} alt="Delivery person with groceries" className="absolute inset-0 h-full w-full object-cover object-center" />
+      <div className="absolute inset-0 bg-[#eef2e2]" />
+      <img
+        src={onboardingImage}
+        alt="Delivery person with groceries"
+        className="absolute inset-0 h-full w-full object-cover object-[center_16%] [@media(orientation:landscape)]:object-contain [@media(orientation:landscape)]:object-center"
+      />
       <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/15 to-black/80" />
-      <div className="relative flex min-h-screen flex-col justify-end px-6 pb-10 pt-14 text-center text-white sm:px-10">
+      <div className="relative flex min-h-screen flex-col justify-end px-6 pb-10 pt-14 text-center text-white sm:px-10 landscape:justify-center landscape:pb-6 landscape:pt-8">
         <div className="absolute left-1/2 top-16 -translate-x-1/2">
           <CarrotIcon className="h-12 w-12 text-white" />
         </div>
@@ -23,13 +27,9 @@ export default function OnboardingScreen() {
           <p className="mt-4 text-base text-white/85 sm:text-lg">Get your groceries in as fast as one hour</p>
         </div>
 
-        <button
-          type="button"
-          onClick={() => navigate('/signin')}
-          className="mx-auto mb-2 w-4/5 rounded-full bg-primary py-4 text-base font-semibold text-white shadow-[0_12px_30px_rgba(76,175,80,0.35)] transition-colors hover:bg-primary-dark sm:w-[22rem]"
-        >
+        <Button type="button" onClick={() => navigate('/signin')} className="mx-auto mb-2 w-4/5 text-base shadow-[0_12px_30px_rgba(76,175,80,0.35)] hover:shadow-[0_14px_34px_rgba(76,175,80,0.42)] sm:w-[22rem]">
           Get Started
-        </button>
+        </Button>
       </div>
     </div>
   )

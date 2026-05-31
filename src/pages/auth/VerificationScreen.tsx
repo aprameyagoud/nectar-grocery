@@ -16,7 +16,7 @@ export default function VerificationScreen() {
   const codeDisplay = useMemo(() => code.map((digit) => digit || '-').join(' '), [code])
   const phoneNumber = typeof location.state === 'object' && location.state && 'phoneNumber' in location.state
     ? String(location.state.phoneNumber)
-    : '+880'
+    : '+91'
   const isComplete = code.every((digit) => digit.length === 1)
 
   useEffect(() => {
@@ -42,17 +42,17 @@ export default function VerificationScreen() {
 
   return (
     <AuthLayout>
-      <div className="mx-auto flex min-h-screen w-full max-w-md flex-col px-6 py-8 sm:px-8">
+      <div className="mx-auto flex min-h-screen w-full max-w-md flex-col px-6 py-8 sm:max-w-xl sm:px-8 lg:max-w-2xl">
         <button type="button" onClick={goBack} className="inline-flex h-10 w-10 items-center justify-center rounded-full text-textPrimary transition-colors hover:bg-black/5">
           <BackArrowIcon className="h-7 w-7" />
         </button>
 
-        <div className="mt-12">
+        <div className="mt-12 sm:mt-14">
           <h1 className="text-3xl font-semibold tracking-[-0.04em] text-textPrimary sm:text-[2.2rem]">Enter your 4-digit code</h1>
-          <p className="mt-3 text-base text-textSecondary">We sent a code to {phoneNumber}</p>
+          <p className="mt-3 text-base text-textSecondary sm:max-w-md">We sent a code to {phoneNumber}</p>
           <label className="mt-10 block text-lg font-medium text-textSecondary">Code</label>
 
-          <div className="mt-4 flex items-center gap-2 border-b border-border pb-3 text-2xl tracking-[0.2em] text-textPrimary">
+          <div className="mt-4 flex items-center justify-center gap-3 border-b border-border pb-4 text-textPrimary sm:gap-4">
             {code.map((digit, index) => (
               <input
                 key={`digit-${index}`}
@@ -64,26 +64,26 @@ export default function VerificationScreen() {
                 onKeyDown={(event) => handleKeyDown(index, event)}
                 inputMode="numeric"
                 maxLength={1}
-                className="h-10 w-6 bg-transparent text-center text-2xl outline-none"
+                className="flex h-14 w-14 rounded-2xl border border-border bg-white text-center text-2xl font-semibold text-textPrimary shadow-[0_4px_12px_rgba(0,0,0,0.06)] outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20 sm:h-16 sm:w-16"
                 aria-label={`Code digit ${index + 1}`}
               />
             ))}
           </div>
         </div>
 
-        <button
-          type="button"
-          onClick={() => navigate('/signup')}
-          disabled={!isComplete}
-          className="fixed bottom-40 right-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white shadow-[0_12px_24px_rgba(76,175,80,0.35)] transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:bg-primary/40 sm:right-[calc(50%-14rem)]"
-          aria-label="Continue to signup"
-        >
-          <CircleArrowIcon className="h-6 w-6" />
-        </button>
-
-        <div className="mt-auto flex items-end justify-between pb-4 text-base">
+        <div className="mt-auto flex items-end justify-between gap-4 pb-4 pt-10 text-base">
           <button type="button" className="text-primary transition-colors hover:text-primary-dark">
             Resend Code
+          </button>
+
+          <button
+            type="button"
+            onClick={() => navigate('/signup')}
+            disabled={!isComplete}
+            className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-b from-[#5FCC66] to-[#3FA845] text-white shadow-[0_14px_28px_rgba(63,168,69,0.42)] ring-1 ring-[#2E7D32]/20 transition-all hover:from-[#56C35D] hover:to-[#368F3C] hover:shadow-[0_16px_32px_rgba(63,168,69,0.52)] disabled:cursor-not-allowed disabled:bg-[#4CAF50]/40"
+            aria-label="Continue to signup"
+          >
+            <CircleArrowIcon className="h-6 w-6" />
           </button>
         </div>
 
