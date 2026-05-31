@@ -2,7 +2,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import { ProductCard } from '../../components/ui/ProductCard'
 import { Skeleton } from '../../components/ui/Skeleton'
-import { fetchCategories } from '../../data/categories'
+import { fetchCategories, localCategories } from '../../data/categories'
 import { fetchProductsByCategory } from '../../data/products'
 import { useFilterStore } from '../../store/filterStore'
 import { useSimulatedFetch } from '../../hooks/useSimulatedFetch'
@@ -38,7 +38,7 @@ export default function CategoryScreen() {
   const routeCategory = categoryLookup[id] ?? ProductCategory.BEVERAGES
   const { data: fetchedCategories } = useSimulatedFetch(fetchCategories)
   const { data: fetchedProducts, loading } = useSimulatedFetch(() => fetchProductsByCategory(routeCategory), [routeCategory])
-  const categories = fetchedCategories ?? []
+  const categories = fetchedCategories ?? localCategories
   const products = fetchedProducts ?? []
   const filters = useFilterStore((state) => ({
     selectedCategories: state.selectedCategories,

@@ -73,3 +73,5 @@ export const fetchCategories = async (): Promise<Category[]> => {
   await delay(600)
   return categories
 }
+
+export const localCategories = categories

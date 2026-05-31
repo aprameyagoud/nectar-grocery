@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 import { ProductCard } from '../../components/ui/ProductCard'
 import { Skeleton } from '../../components/ui/Skeleton'
-import { fetchCategories } from '../../data/categories'
+import { fetchCategories, localCategories } from '../../data/categories'
 import { fetchProducts } from '../../data/products'
 import { useSimulatedFetch } from '../../hooks/useSimulatedFetch'
 import type { Category, Product } from '../../types'
@@ -85,7 +85,7 @@ export default function HomeScreen() {
   const { data: fetchedCategories, loading: categoriesLoading } = useSimulatedFetch(fetchCategories)
   const { data: fetchedProducts, loading: productsLoading } = useSimulatedFetch(fetchProducts)
 
-  const categories = fetchedCategories ?? []
+  const categories = fetchedCategories ?? localCategories
   const products = fetchedProducts ?? []
   const exclusive = products.slice(0, 4)
   const bestSelling = products.slice(8, 12)
